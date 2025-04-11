@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Resources/HavocHeader.css">
+    <title>Admin</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navdiv">
+                <div class="navlogo">
+                    <img src="/Resources/pictures/Logo_GlitchHavoc.png">
+                    <h1>Glitch Havoc</h1>
+                </div>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <button><a href="#">{{.Username}}</a></button>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="Body-Container"> 
+        <div class="Forum-Container">
+            <form action="/api/SetUserRole" method="POST">
+                <input type="text" placeholder="User ID" name="UserID">
+                <select name="RoleID" id="RoleIdBox">                  
+                    <option value="0">User</option>
+                    <option value="1">Moderator</option>
+                    <option value="2">Admin</option>
+                </select>
+                <button type="submit">Set</button>
+            </form>
+            <form action="/api/DisableAccount" method="POST">
+                <input type="text" placeholder="User ID" name="UserID">
+                <select name="disabled" id="RoleIdBox">                 
+                    <option value="0">Disable</option>
+                    <option value="1">Enable</option>
+                </select>
+                <button type="submit">Set</button>
+            </form>
+            <form action="/api/CreateCategory" method="POST">
+                <input type="text" placeholder="Title category" name="title">
+                <button type="submit">Create</button>
+            </form>
+            <form action="/api/CreateThread" method="POST">
+                <input type="text" placeholder="Title thread" name="title">
+                <input type="text" placeholder="category" name="category">
+                <button type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+
+    
+</body>
+</html>
