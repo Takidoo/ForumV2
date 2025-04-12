@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TandemTalk Forum d'apprentissage de langue</title>
   <link rel="stylesheet" href="/Resources/style_acc.css">
 </head>
+
 <body>
   <!-- Header Principal -->
   <header class="main-header">
     <div class="header-left">
       <div class="logo">
-          <div class="logo-placeholder">TravelTandem</div>
+        <div class="logo-placeholder">TravelTandem</div>
         </a>
       </div>
       <nav class="main-nav">
-    <a href="#">Français</a>
-    <a href="#">Espagnol</a>
-    <a href="#">Italien</a>
-    <a href="#">Portugais</a>
-    <a href="#">Thaïlandais</a>
-    <a href="#">Anglais</a>
-    
+        <a href="#">Français</a>
+        <a href="#">Espagnol</a>
+        <a href="#">Italien</a>
+        <a href="#">Portugais</a>
+        <a href="#">Thaïlandais</a>
+        <a href="#">Anglais</a>
+
       </nav>
     </div>
     <div class="header-right">
@@ -30,19 +32,19 @@
         <a href="/login" class="auth-link">Connexion</a>
       </div>
     </div>
-    
-        </div>
-      <button class="theme-button">
-        <!-- si Jamais on veut faire un darkmode -->
-        <span class="icon-sun">☀</span>
-      </button>
-    </div> 
+
+    </div>
+    <button class="theme-button">
+      <!-- si Jamais on veut faire un darkmode -->
+      <span class="icon-sun">☀</span>
+    </button>
+    </div>
   </header>
 
   <!-- Navigation des plateformes -->
   <nav class="platforms-nav">
     <a href="#">Voyage </a>
-    <a href="#">Actualité </a> 
+    <a href="#">Actualité </a>
     <a href="#">Culture </a>
     <a href="/loisirs">Loisirs</a>
     <a href="#">Sport </a>
@@ -50,52 +52,80 @@
 
 
   <!-- Contenu principal -->
-  <div class="main-container">
-    <div class="forum-container">
-      <h1 class="forum-title">Forum Anglais </h1>
+  <div>
+    <div class="main-container">
+      <div class="forum-container">
+        <h1 class="forum-title">Forum Anglais </h1>
 
-      <!-- Actions du forum -->
-      <div class="forum-actions">
-        <a href="#" class="new-topic-button">Nouveau sujet</a>
+        <!-- Actions du forum -->
+        <div class="forum-actions">
+          <a href="#" class="new-topic-button">Nouveau sujet</a>
+        </div>
+
+        <!-- Tableau des sujets -->
+        <table class="topic-table">
+          <thead>
+            <tr>
+              <th>AUTEUR</th>
+              <th>SUJET</th>
+              <th>DATE</th>
+            </tr>
+          </thead>
+
+        </table>
+        <div id="div">
+          <div id="div4">auteur</div>
+          <div id="div3">sujet</div>
+          <div id="div4">date</div>
+        </div>
+        <div id="div">
+          <div id="div4">auteur</div>
+          <div id="div3">sujet</div>
+          <div id="div4">date</div>
+        </div>
+        <div id="div">
+          <div id="div4">auteur</div>
+          <div id="div3">sujet</div>
+          <div id="div4">date</div>
+        </div>
+
+
       </div>
-
-      <!-- Tableau des sujets -->
-      <table class="topic-table">
-        <thead>
-          <tr>
-            <th>SUJET</th>
-            <th>AUTEUR</th>
-            <th>NB</th>
-            <th>DERNIER MSG</th>
-          </tr>
-        </thead>
-        
-      </table>
-    </div>
 
 
       <div class="sidebar-box">
         <div class="sidebar-title">INFOS</div>
         <div class="sidebar-content">
-          <div class="forum-stats">
-            <span class="icon-users">👥</span> 524 connecté(s)
+          <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Rechercher un sujet, un mot, un auteur...">
+            <button class="search-button">
+              <span class="icon-search">🔍</span>
+            </button>
           </div>
+          <div class="info-section">
+              <h3>Filtrer les sujets</h3>
+              <div class="filter-options">
+                <button class="filter-button" data-filter="top-liked">🔥 Les plus likés</button>
+                <button class="filter-button" data-filter="most-recent">🆕 Les plus récents</button>
+                <button class="filter-button" data-filter="most-commented">💬 Les plus commentés</button>
+              </div>
+            </div>
+            <h3>Langues populaires</h3>
+            <div class="forum-links">
+              <a href="#">Français (1020 sujets)</a>
+              <a href="#">Anglais (870 sujets)</a>
+              <a href="#">Espagnol (740 sujets)</a>
+            </div>
+          </div>  
 
-        
+
 
           <div class="info-section">
-            <form id="postForm">
-                <input type="text" id="title" placeholder="Titre" name="title" required>
-                <input type="text" id="category" placeholder="Catégorie (non utilisé ici)" name="category">
-                <input type="text" id="content" placeholder="Contenu" name="content" required>
-                <button type="submit">Publier</button>
-              </form>
           </div>
         </div>
       </div>
     </div>
-    <div id="posts-container">
-    </div>
   </div>
 </body>
+
 </html>
