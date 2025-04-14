@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TandemTalk Language Learning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="Resources/variable.css">
+    <link rel="stylesheet" href="Resources/basic_initial.css">
+    <link rel="stylesheet" href="Resources/layout.css">
+    <link rel="stylesheet" href="Resources/bubble_effect.css">
+    <link rel="stylesheet" href="Resources/animation.css">
+    <script src="Resources/nav_form.js"></script>
+</head>
+
+<body>
+    <div class="page-container"> <!--squelette en grid pour un placement plus précis et adaptatif-->
+        <!--HEADER PRINCIPAL-->
+        <header class="main-header header-bubble floating-slow">
+            <div class="header-left">
+                <div class="logo">
+                    <div class="logo-placeholder">TravelTandem</div>
+                </div>
+                <nav class="main-nav nav-bubble">
+                    <a href="#">French</a>
+                    <a href="#">Spanish</a>
+                    <a href="#">Italian</a>
+                    <a href="#">Portuguese</a>
+                    <a href="#">Thai</a>
+                    <a href="#">English</a>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <div class="auth-buttons">
+                    <a href="/register" class="accent-button pink button-bubble">Register</a>
+                    <a href="/login" class="accent-button blue button-bubble">Login</a>
+                </div>
+            
+                <button class="button-bubble">
+                    <i class="fas fa-sun">☀</i>
+                </button>
+            </div>
+        </header>
+
+        <!--NAVIGATION ENTRE PLATEFORMES-->
+        <nav class="platforms-nav sub-header nav-bubble floating">
+            <a href="#"><i class="fas fa-plane-departure"></i>Travel</a>
+            <a href="#">News</a> 
+            <a href="#">Culture</a>
+            <a href="#">Hobbies</a>
+            <a href="#">Sport</a>
+        </nav>
+
+
+        <!--CONTENU PRINCIPAL-->
+        <main class="main-content">
+            <div class="forum-layout">
+                <div class="forum-content">
+                    <h1 class="forum-title">French Forum</h1>
+
+                    <!-- Actions du forum -->
+                    <div class="forum-actions">
+                        <a href="#" class="accent-button bleu button-bubble"><i class="fas fa-plus-circle"></i>New topic</a>
+                    </div>
+
+                    <!-- Tableau des sujets -->
+                    <table class="topic-bubble floating-slow">
+                        <thead>
+                            <tr>
+                                <th>TOPIC</th>
+                                <th>AUTHOR</th>
+                                <th>REPLIES</th>
+                                <th>LAST MESSAGE</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <tr>
+                                <td><a href="#" class="topic-title"><i class="fas fa-comment"></i></a></td>
+                                <td>Sophie_L</td>
+                                <td>24</td>
+                                <td>Il y a 2 heures</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" class="topic-title"><i class="fas fa-star"></i> Ressources pour l'apprentissage</a></td>
+                                <td>Alex_Martin</td>
+                                <td>42</td>
+                                <td>Hier</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" class="topic-title"><i class="fas fa-question-circle"></i> Questions vocabulaire voyage</a></td>
+                                <td>VoyageurDuMonde</td>
+                                <td>15</td>
+                                <td>13/04/2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div id="posts-container">
+                        <!--les postes seront afficher ici-->
+                    </div>
+                </div>
+
+                <!--SIDEBAR-->
+                <div class="forum-sidebar">
+                    <div class="sidebar-box sidebar-bubble floating">
+                        <div class="sidebar-title">DESCRIPTION</div>
+                        <div class="sidebar-content">
+                            <div class="forum-stats">
+                                <i class="fas fa-users"></i> 524 connecté(s)
+                            </div>
+                            <hr>
+                            <div class="info-section">
+                                <form id="postForm" class="bubble-effect">
+                                    <input type="text" id="title" placeholder="Title" name="title" required class="input-bubble">
+                                    <input type="text" id="category" placeholder="Category" name="category" class="input-bubble">
+                                    <input type="text" id="content" placeholder="Content" name="content" required class="input-bubble">
+                                    <button type="submit" class="accent-button blue button-bubble">Post<i class="fas fa-paper-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-box sidebar-bubble floating-slow">
+                        <div class="sidebar-title">STATISTIC</div>
+                        <div class="sidebar-content">
+                            <p><i class="fas fa-chart-line"></i>1250 active members</p>
+                            <p><i class="fas fa-comment"></i>876 discussion topics</p>
+                            <p><i class="fas fa-reply"></i>15432 messages</p>
+                            <hr>
+                            <blockquote class="bubble-effect">
+                                "Language is the reflection of a people's culture."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer class="footer footer-bubble">
+            <div class="footer-content">
+                <p>&copy; 2025 TravelTandem - All rights reserved</p>
+                <div class="social-links">
+                    <a href="#" class="button-bubble social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="button-bubble social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="button-bubble social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
