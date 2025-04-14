@@ -1,0 +1,96 @@
+/*ANIMATION STYLE APPARENCE BULLES*/
+
+/*flottement des éléments*/
+@keyframes float{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-0.625rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes float-slow {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-0.9375rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+/*pulsations douces*/
+@keyframes pulse {
+    0%{
+        transform: scale(1);
+        opacity: 1;
+    }
+    50%{
+        transform: scale(1.03);
+        opacity: 0.9;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/*CLASSES UTILISEES POUR LES ANIMATIONS*/
+.floating{
+    animation: float 8s ease-in-out infinite;
+}
+
+.floating-slow{
+    animation: float-slow 12s ease-in-out infinite;
+}
+
+.pulsing{
+    animation: pulse 5s ease-in-out infinite;
+}
+
+/*animation de transitions login/register*/
+.animation{
+    transition: all 0.5s ease;
+}
+
+/*animation de titre*/
+.title-animation{
+    position: relative;
+    display: inline-block;
+}
+
+.title-animation:hover::after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/*animation de fondu*/
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in{
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+/*délais avant l'animation*/
+.delay-1{animation-delay: 0.2s;}
+.delay-2{animation-delay: 0.4s;}
+.delay-3{animation-delay: 0.6s;}
+.delay-4{animation-delay: 0.8s;}
+.delay-5{animation-delay: 1s;}
