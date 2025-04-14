@@ -1,0 +1,339 @@
+/*MISE EN PAGE PRINCIPALE*/
+
+/*structure de la page principale*/
+.page-container{
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "subheader"
+        "main"
+        "footer";
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/*conteneur principal*/
+.main-content{
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
+    position: relative;
+}
+
+/*header*/
+.main-header{
+    grid-area: header;
+    position: sticky; /*conserve sa position dans la page*/
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+    margin: 0 var(--spacing-sm) var(--spacing-md);
+}
+
+.header-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+}
+.header-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.logo{
+    margin-bottom: var(--spacing-sm);
+}
+
+.main-nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    width: 100%;
+    padding: var(--spacing-xs);
+}
+.main-nav a{
+    padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.sub-header{
+    grid-area: subheader;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0 var(--spacing-md);
+    margin: 0 var(--spacing-md) var(--spacing-md);
+    display: flex;
+    height: 40px;
+    align-items: center;
+}
+.sub-header a{
+    padding: 0 var(--spacing-md);
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/*footer*/
+.footer{
+    grid-area: footer;
+    padding: var(--spacing-lg);
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+/*STRUCTURE FORUM*/
+.forum-layout{
+    display: grid;
+    grid-template-areas: 
+        "content"
+        "sidebar";
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+.forum-content{
+    grid-area: content;
+}
+.forum-sidebar{
+    grid-area: sidebar;
+}
+
+/*boutons action du forum*/
+.forum-actions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: auto;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+/*STRUCTURE POUR LE FORMULAIRE D'AUTHENTIFICATION*/
+.auth-layout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--spacing-md);
+}
+
+.wrapper{ /*conteneur de formulaires*/
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    min-height: 450px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-lg);
+}
+
+/*formulaire login/register*/
+.form-box{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: var(--spacing-xl);
+    transition: all 0.5s ease;
+}
+.form-box.login{
+    left: 0;
+}
+.form-box.register{
+    right: -100%; /*sort de la page visible*/
+    opacity: 0;
+    pointer-events: none; /*désactive les interaction avec l'élément*/
+}
+
+/*basculement entre login et register*/
+.wrapper.active .form-box.login{
+    left: -100%;
+    opacity: 0;
+    pointer-events: none;
+}
+.wrapper.active .form-box.register{ /*rend visible register*/
+    right: 0; 
+    opacity: 1;
+    pointer-events: all; /*inclus tous les éléments*/
+}
+
+/*message d'accueil ou d'information complémentaires de l'authentification*/
+.info-text{
+    display: none;
+}
+
+
+/*STRUCTURE DE LA PAGE ADMIN*/
+.admin-layout{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+}
+
+
+
+/*AFFICHAGE MODE TABLETTE (à partir de 48em ou 768px)*/
+@media (min-width: 48em){
+    /*stucture header*/
+    .main-header{
+        flex-direction: row;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    .header-left{
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: auto;
+        margin-bottom: 0;
+    }
+    .header-right{
+        flex-direction: row;
+        width: auto;
+    }
+    .logo{
+        margin-bottom: 0;
+        margin-right: var(--spacing-md);
+    }
+
+    .main-nav{
+        justify-content: flex-start;
+        width: auto;
+    }
+
+    /*structure du contenu pricipal*/
+    .main-content{
+        padding: var(--spacing-lg) var(--spacing-xl);
+    }
+
+    /*structure forum*/
+    .forum-layout{
+        grid-template-areas: 
+            "content sidebar";
+        grid-template-columns: 2fr 1fr;
+    }
+
+    /*action du forum*/
+    .forum-actions{
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /*authentification*/
+    .wrapper{
+        max-width: 650px;
+    }
+
+    /*éléments du formulaire*/
+    .form-box{
+        width: 50%;
+    }
+    .form-box.login{
+        padding: 0 var(--spacing-xl) 0 var(--spacing-lg);
+    }
+    .form-box.register{
+        padding: 0 var(--spacing-lg) 0 var(--spacing-xl);
+        right: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /*informations*/
+    .info-text{
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: var(--spacing-lg);
+    }
+    .info-text.login{
+        right: 0;
+        text-align: center;
+    }
+    .info-text.register{
+        left: 0;
+        text-align: center;
+        pointer-events: none;
+        opacity: 0;
+    }
+    
+    .wrapper.active .info-text.login{
+        opacity: 0;
+        pointer-events: none;
+    }
+    .wrapper.active .info-text.register{
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    /*admin*/
+    .admin-layout{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/*AFFICHAGE MODE ORDINATEUR (à partir de 64em ou 1024px)*/
+@media (min-width: 64em){
+    /*conteneur principale*/
+    .page-container{
+        max-width: 90rem;
+        margin: 0 auto;
+    }
+
+    /*structure principale*/
+    .main-content{
+        padding: var(--spacing-xl);
+        gap: var(--spacing-xl);
+    }
+    .main-header{
+        margin: var(--spacing-md) var(--spacing-lg) var(--spacing-xl);
+        padding: var(--spacing-md) var(--spacing-xl);
+    }
+    .sub-header{
+        margin: 0 var(--spacing-xl) var(--spacing-xl);
+    }
+
+    /*Forum*/
+    .forum-layout{
+        grid-template-columns: 3fr 1fr;
+    }
+
+    /*authentification*/
+    .wrapper{
+        max-width: 750px;
+    }
+
+    /*formulaires*/
+    .form-box, .info-text{
+        padding: var(--spacing-xl);
+    }
+
+    /*admin*/
+    .admin-layout{
+        grid-template-columns: repeat(3, 1fr); /*1fr 1fr 1fr*/
+    }
+}

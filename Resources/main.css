@@ -1,0 +1,18 @@
+/*PERMET D'IMPORTER TOUTES LES PAGES CSS*/
+
+/*Police Google Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/*Base*/
+@import url('./variable.css');
+@import url('./basic_initial.css');
+
+
+/*layouts*/
+@import url('./layout.css');
+
+
+/*composants*/
+@import url('./bubble_effect.css');
+@import url('./animation.css');

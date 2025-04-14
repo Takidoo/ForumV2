@@ -1,0 +1,66 @@
+/*VARIABLES DE STYLE GENERALE UTILISEES POUR TOUS LES FICHIERS HTML*/
+
+:root{
+    /*palette arc-en-ciel*/
+    --accent-red: rgba(255, 105, 97, 0.8);
+    --accent-orange: rgba(255, 180, 128, 0.8);
+    --accent-yellow: rgba(248, 243, 141, 0.8);
+    --accent-green: rgba(66, 214, 164, 0.8);
+    --accent-blue: rgba(89, 173, 246, 0.8);
+    --accent-violet: rgba(157, 148, 255, 0.8);
+    --accent-pink: rgba(255, 105, 180, 0.8);
+
+    /*couleurs principales*/
+    --primary-color: var(--accent-blue);
+    --primary-dark: rgba(70, 140, 200, 0.9);
+    --primary-light: rgba(173, 216, 255, 0.7);
+
+    /*couleurs secondaires*/
+    --secondary-color: var(--accent-yellow);
+    --secondary-dark: rgba(230, 180, 70, 0.9);
+    --highlight-color: var(--accent-pink);
+
+    /*couleurs de fond*/
+    --bg-dark: rgba(60, 70, 80, 0.8);
+    --bg-light: rgba(255, 255, 255, 0.8);
+    --bg-white: rgba(255, 255, 255, 0.95);
+
+    /*couleurs de texte*/
+    --text-main: rgba(60, 60, 70, 0.9);
+    --text-light: #fff;
+    --text-muted: rgba(100, 100, 110, 0.7);
+    --text-link: var(--accent-blue);
+    --text-highlight: var(--accent-pink);
+
+    /*ombres et bordures*/
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+
+    --border-radius-sm: 0.5rem;
+    --border-radius-md: 1rem;
+    --border-radius-lg: 1.5rem;
+    --border-color: rgba(230, 230, 240, 0.7);
+
+    /*effet de bulle*/
+    --bubble-bg: rgba(255, 255, 255, 0.6);
+    --bubble-border: 1px solid rgba(255, 255, 255, 0.3);
+    --bubble-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --bubble-blur: 0.3125rem;
+
+    /*espacement*/
+    --spacing-xs: 0.3rem;
+    --spacing-sm: 0.6rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+
+    /*taille de texte*/
+    --font-xs: 0.8rem;
+    --font-sm: 0.9rem;
+    --font-md: 1rem;
+    --font-lg: 1.25rem;
+    --font-xl: 1.5rem;
+    --font-xxl: 2rem;
+    --font-xxxl: 2.5rem;
+}
