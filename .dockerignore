@@ -1,0 +1,4 @@
+.git
+*.log
+*.db
+node_modules
