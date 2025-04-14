@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/register - TravelTandem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/Resources/main.css">
+    <script src="/Resources/nav_form.js"></script>
+</head>
+
+<body class="auth-page">
+    <div class="auth-layout"> <!--structure principale de la page d'authentification-->
+        <div class="wrapper bubble-effect floating-slow {{.Type}}"> <!--contenteur de formulaires-->
+            <div class="form-box login card-bubble">
+                <h2 class="title animation" style="--i:0; --j:22">Login</h2>
+                <form action="/api/login" method="POST">
+                    <div class="input-box animation" style="--i:1; --j:22">
+                        <input type="text" name="username" required class="input-bubble">
+                        <label for="username_login">Username</label>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="input-box animation" style="--i:2; --j:23">
+                        <input type="password" name="password" required class="input-bubble">
+                        <label for="password_login">Password</label>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <button type="submit" class="btn animation accent-button blue button-bubble" style="--i:3; --j:24">
+                        Login<i class="fas fa-sign-in-alt"></i>
+                    </button>
+                    <div class="linkTxt animation" style="--i:5; --j:25">
+                        <p>Don't have an account yet?<a href="#" class="register-link">Register</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="info-text login card-bubble"> <!--message pour la connexion-->
+                <h2 class="animation" style="--i:0; --j:20">Welcome Back!</h2>
+                <p class="animation" style="--i:1; --j:21">Log in to join our language learning community.</p>
+                <div class="animation" style="--i:2; --j:22">
+                    <blockquote class="bubble-effect">
+                        "A new language is a new life."
+                    </blockquote>
+                </div>
+            </div>
+    
+            <div class="form-box register"> <!--formulaire d'inscription-->
+                <h2 class="title animation" style="--i:17; --j:0">Sign Up</h2>
+                <form action="/api/register" method="POST">
+                    <div class="input-box animation" style="--i:18; --j:1">
+                        <input type="text" name="username"required class="input-bubble">
+                        <label for="username_signup">Username</label>
+                        <i class='fas fa-user'></i>
+                    </div>
+    
+                    <div class="input-box animation" style="--i:19; --j:2">
+                        <input type="email" name= "email" required class="input-bubble">
+                        <label for="email">Email</label>
+                        <i class='fas fa-envelope'></i>
+                    </div>
+    
+                    <div class="input-box animation" style="--i:20; --j:3">
+                        <input type="password" name="password" required class="input-bubble">
+                        <label for="password_signup">Password</label>
+                        <i class='fas fa-lock'></i>
+                    </div>
+                    <button type="submit" class="btn animation accent-button pink button-bubble" style="--i:21;--j:4">Sign Up</button>
+                    <div class="linkTxt animation" style="--i:22; --j:5">
+                        <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    </div>
+                </form>
+            </div>
+    
+            <div class="info-text register card-bubble"> <!--message pour inscription-->
+                <h2 class="animation" style="--i:17; --j:0;">Join us!</h2>
+                <p class="animation" style="--i:18; --j:1;">Create an account to explore the world through languages.</p>
+                <div class="animation" style="--i:19; --j:2;">
+                    <blockquote class="bubble-effect">
+                        "The limits of my language are the limits of my world."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+
+        <div class="auth-logo-container button-bubble"> <!--logo flottant-->
+            <div class="logo-placeholder">TravelTandem</div>
+        </div>
+    </div>
+</body>
+</html>
