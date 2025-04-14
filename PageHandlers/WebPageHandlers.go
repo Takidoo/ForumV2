@@ -28,7 +28,7 @@ func TestPageHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, nil)
 }
 func HomePageHandler(w http.ResponseWriter, r *http.Request) {
-	var tmpl, _ = template.ParseFiles("WebPages/home.html")
+	var tmpl, _ = template.ParseFiles("WebPages/forum.html")
 	cookie, err := r.Cookie("session_id")
 	if err == nil {
 		user, err := Forum.GetUser(cookie.Value)
