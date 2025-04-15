@@ -92,3 +92,12 @@ func CreationHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	tmpl.Execute(w, nil)
 }
+
+func SearchHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("WebPages/search.html")
+	if err != nil {
+		log.Println("Erreur lors du chargement de la page de création :", err)
+		return
+	}
+	tmpl.Execute(w, nil)
+}
