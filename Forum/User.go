@@ -21,6 +21,14 @@ func GetUser(session string) (User, error) {
 	_ = Database.DB.QueryRow("SELECT username, role FROM users WHERE id = ?", user.ID).Scan(&user.Username, &user.Role)
 	return user, nil
 }
+func GetUserById(user_id int) User {
+	var user User
+	err := Database.DB.QueryRow("SELECT username, role FROM users WHERE id = ?", user_id).Scan(&user.Username, &user.Role)
+	if err != nil {
+		return User{}
+	}
+	return user
+}
 func UserIsAdmin(session string) bool {
 	var userID int
 	err := Database.DB.QueryRow("SELECT user_id FROM sessions WHERE token=?", session).Scan(&userID)

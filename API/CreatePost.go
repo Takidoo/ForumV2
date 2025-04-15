@@ -37,5 +37,6 @@ func CreatePost(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Cannot create post", http.StatusInternalServerError)
 		return
 	}
+	_, qerr = Database.DB.Exec("UPDATE threads SET replies =replies+1 WHERE id=?", thread_id)
 	json.NewEncoder(w).Encode(map[string]string{"message": "Success"})
 }

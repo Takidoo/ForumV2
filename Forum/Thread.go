@@ -6,27 +6,40 @@ import (
 )
 
 type Thread struct {
-	ID    int    `json:"id"`
-	Title string `json:"title"`
+	ID       int    `json:"id"`
+	Title    string `json:"title"`
+	Author   string `json:"author"`
+	Replies  int    `json:"replies"`
+	Creation string `json:"creation"`
 }
 
 func GetLastedThreads(limit int) []Thread {
-	rows, _ := Database.DB.Query("SELECT id,title FROM threads WHERE visible=true ORDER BY id DESC LIMIT ?;", limit)
+	rows, err := Database.DB.Query("SELECT id,title,created_at,replies FROM threads WHERE visible=true ORDER BY id DESC LIMIT ?;", limit)
 	var Threads []Thread
+	if err != nil {
+		print(err.Error())
+		return []Thread{}
+	}
 	for rows.Next() {
 		var thread Thread
-		rows.Scan(&thread.ID, &thread.Title)
+		rows.Scan(&thread.ID, &thread.Title, &thread.Creation, &thread.Replies)
 		Threads = append(Threads, thread)
 	}
 	return Threads
 }
 
 func GetMostLikedThreads(limit int) []Thread {
-	rows, _ := Database.DB.Query("SELECT id,title FROM threads WHERE visible=true ORDER BY likes ASC LIMIT ?;", limit)
+	rows, err := Database.DB.Query("SELECT id,title,created_at,replies,user_id FROM threads WHERE visible=true ORDER BY likes ASC LIMIT ?;", limit)
 	var Threads []Thread
+	if err != nil {
+		print(err.Error())
+		return []Thread{}
+	}
 	for rows.Next() {
 		var thread Thread
-		rows.Scan(&thread.ID, &thread.Title)
+		var user_id int
+		rows.Scan(&thread.ID, &thread.Title, &thread.Creation, &thread.Replies, &user_id)
+		thread.Author = GetUserById(user_id).Username
 		Threads = append(Threads, thread)
 	}
 	return Threads

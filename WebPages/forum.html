@@ -57,7 +57,7 @@
         <main class="main-content">
             <div class="forum-layout">
                 <div class="forum-content">
-                    <h1 class="forum-title">French Forum</h1>
+                    <h1 class="forum-title">Top Threads</h1>
 
                     <!-- Actions du forum -->
                     <div class="forum-actions">
@@ -76,24 +76,14 @@
                         </thead>
     
                         <tbody>
+                            {{range .MostLikedThread}}
                             <tr>
-                                <td><a href="#" class="topic-title"><i class="fas fa-comment"></i></a></td>
-                                <td>Sophie_L</td>
-                                <td>24</td>
-                                <td>Il y a 2 heures</td>
+                                <td><a href="#" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td>{{.Author}}</td>
+                                <td>{{.Replies}}</td>
+                                <td>{{.Creation}}</td>
                             </tr>
-                            <tr>
-                                <td><a href="#" class="topic-title"><i class="fas fa-star"></i> Ressources pour l'apprentissage</a></td>
-                                <td>Alex_Martin</td>
-                                <td>42</td>
-                                <td>Hier</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#" class="topic-title"><i class="fas fa-question-circle"></i> Questions vocabulaire voyage</a></td>
-                                <td>VoyageurDuMonde</td>
-                                <td>15</td>
-                                <td>13/04/2025</td>
-                            </tr>
+                            {{end}}
                         </tbody>
                     </table>
 
