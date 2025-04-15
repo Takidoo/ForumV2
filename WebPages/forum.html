@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
     <link rel="stylesheet" href="Resources/basic_initial.css">
     <link rel="stylesheet" href="Resources/layout.css">
     <link rel="stylesheet" href="Resources/bubble_effect.css">
-    <link rel="stylesheet" href="Resources/animation.css">
+
     <script src="Resources/nav_form.js"></script>
 </head>
 
@@ -22,12 +23,12 @@
                     <div class="logo-placeholder">TravelTandem</div>
                 </div>
                 <nav class="main-nav nav-bubble">
-                    <a href="#">French</a>
-                    <a href="#">Spanish</a>
-                    <a href="#">Italian</a>
-                    <a href="#">Portuguese</a>
-                    <a href="#">Thai</a>
-                    <a href="#">English</a>
+                    <button class="lang-btn" data-lang="fr">French</button>
+                    <button class="lang-btn" data-lang="es">Spanish</button>
+                    <button class="lang-btn" data-lang="it">Italian</button>
+                    <button class="lang-btn" data-lang="pt">Portuguese</button>
+                    <button class="lang-btn" data-lang="th">Thai</button>
+                    <button class="lang-btn" data-lang="en">English</button>
                 </nav>
             </div>
 
@@ -36,69 +37,96 @@
                     <a href="/register" class="accent-button pink button-bubble">Register</a>
                     <a href="/login" class="accent-button blue button-bubble">Login</a>
                 </div>
-            
+
                 <button class="button-bubble">
                     <i class="fas fa-sun">☀</i>
                 </button>
             </div>
         </header>
 
-        <!--NAVIGATION ENTRE PLATEFORMES-->
-        <nav class="platforms-nav sub-header nav-bubble floating">
-            <a href="#"><i class="fas fa-plane-departure"></i>Travel</a>
-            <a href="#">News</a> 
-            <a href="#">Culture</a>
-            <a href="#">Hobbies</a>
-            <a href="#">Sport</a>
-        </nav>
-
 
         <!--CONTENU PRINCIPAL-->
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const forumTitles = {
+                    fr: "Forum Français",
+                    es: "Foro Español",
+                    it: "Forum Italiano",
+                    pt: "Fórum Português",
+                    th: "ฟอรั่มภาษาไทย",
+                    en: "English Forum"
+                };
+        
+                const newTopicTexts = {
+                    fr: "Nouveau sujet",
+                    es: "Nuevo tema",
+                    it: "Nuovo argomento",
+                    pt: "Novo tópico",
+                    th: "หัวข้อใหม่",
+                    en: "New Topic"
+                };
+        
+                const langButtons = document.querySelectorAll(".lang-btn");
+                const postsContainer = document.getElementById("posts-container");
+        
+                const contentByLanguage = {
+                    fr: [
+                        { author: "Jean Dupont", subject: "Apprendre l'anglais", date: "2025-01-01" },
+                        { author: "Marie Curie", subject: "Les langues latines", date: "2025-02-15" }
+                    ],
+                    es: [
+                        { author: "Carlos García", subject: "Aprender francés", date: "2025-03-10" },
+                        { author: "Lucía Fernández", subject: "Idiomas y cultura", date: "2025-04-20" }
+                    ],
+                    it: [
+                        { author: "Giovanni Rossi", subject: "Imparare lo spagnolo", date: "2025-05-05" },
+                        { author: "Maria Bianchi", subject: "Lingue romanze", date: "2025-06-25" }
+                    ],
+                    pt: [
+                        { author: "João Silva", subject: "Aprender italiano", date: "2025-07-15" },
+                        { author: "Ana Costa", subject: "Cultura e idiomas", date: "2025-08-30" }
+                    ],
+                    th: [
+                        { author: "Somchai Wong", subject: "เรียนภาษาอังกฤษ", date: "2025-09-10" },
+                        { author: "Suda Lek", subject: "ภาษาและวัฒนธรรม", date: "2025-10-05" }
+                    ],
+                    en: [
+                        { author: "John Smith", subject: "Learning Spanish", date: "2025-11-20" },
+                        { author: "Jane Doe", subject: "Languages and Culture", date: "2025-12-15" }
+                    ]
+                };
+        
+                langButtons.forEach(button => {
+                    button.addEventListener("click", () => {
+                        const selectedLang = button.getAttribute("data-lang");
+                        const forumTitle = forumTitles[selectedLang] || "Forum";
+                        const newTopicText = newTopicTexts[selectedLang] || "New Topic";
+        
+                        const titleContainer = `
+                            <div class="forum-header">
+                                <h2>${forumTitle}</h2>
+                                <button class="accent-button green button-bubble">${newTopicText}</button>
+                            </div>
+                        `;
+        
+                        const posts = contentByLanguage[selectedLang] || [];
+                        postsContainer.innerHTML = titleContainer + posts.map(post => `
+                            <div id="div">
+                                <div id="div4">${post.author}</div>
+                                <div id="div3">${post.subject}</div>
+                                <div id="div4">${post.date}</div>
+                            </div>
+                        `).join("");
+                    });
+                });
+            });
+        </script>
         <main class="main-content">
             <div class="forum-layout">
-                <div class="forum-content">
-                    <h1 class="forum-title">French Forum</h1>
-
-                    <!-- Actions du forum -->
-                    <div class="forum-actions">
-                        <a href="#" class="accent-button bleu button-bubble"><i class="fas fa-plus-circle"></i>New topic</a>
-                    </div>
-
-                    <!-- Tableau des sujets -->
-                    <table class="topic-bubble floating-slow">
-                        <thead>
-                            <tr>
-                                <th>TOPIC</th>
-                                <th>AUTHOR</th>
-                                <th>REPLIES</th>
-                                <th>LAST MESSAGE</th>
-                            </tr>
-                        </thead>
-    
-                        <tbody>
-                            <tr>
-                                <td><a href="#" class="topic-title"><i class="fas fa-comment"></i></a></td>
-                                <td>Sophie_L</td>
-                                <td>24</td>
-                                <td>Il y a 2 heures</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#" class="topic-title"><i class="fas fa-star"></i> Ressources pour l'apprentissage</a></td>
-                                <td>Alex_Martin</td>
-                                <td>42</td>
-                                <td>Hier</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#" class="topic-title"><i class="fas fa-question-circle"></i> Questions vocabulaire voyage</a></td>
-                                <td>VoyageurDuMonde</td>
-                                <td>15</td>
-                                <td>13/04/2025</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
+                <div id="language-nav" class="forum-content">
                     <div id="posts-container">
-                        <!--les postes seront afficher ici-->
+                        
+
                     </div>
                 </div>
 
@@ -113,10 +141,14 @@
                             <hr>
                             <div class="info-section">
                                 <form id="postForm" class="bubble-effect">
-                                    <input type="text" id="title" placeholder="Title" name="title" required class="input-bubble">
-                                    <input type="text" id="category" placeholder="Category" name="category" class="input-bubble">
-                                    <input type="text" id="content" placeholder="Content" name="content" required class="input-bubble">
-                                    <button type="submit" class="accent-button blue button-bubble">Post<i class="fas fa-paper-plane"></i></button>
+                                    <input type="text" id="title" placeholder="Title" name="title" required
+                                        class="input-bubble">
+                                    <input type="text" id="category" placeholder="Category" name="category"
+                                        class="input-bubble">
+                                    <input type="text" id="content" placeholder="Content" name="content" required
+                                        class="input-bubble">
+                                    <button type="submit" class="accent-button blue button-bubble">Post<i
+                                            class="fas fa-paper-plane"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -144,11 +176,12 @@
                 <p>&copy; 2025 TravelTandem - All rights reserved</p>
                 <div class="social-links">
                     <a href="#" class="button-bubble social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="button-bubble social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" cla ss="button-bubble social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="button-bubble social-link"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </footer>
     </div>
 </body>
+
 </html>
