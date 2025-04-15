@@ -32,8 +32,12 @@
 
             <div class="header-right">
                 <div class="auth-buttons">
+                    {{if .IsLogged}}
+                    <br>
+                    {{else}}
                     <a href="/register" class="accent-button pink button-bubble">Register</a>
                     <a href="/login" class="accent-button blue button-bubble">Login</a>
+                    {{end}}
                 </div>
             
                 <button class="button-bubble">
@@ -81,7 +85,40 @@
                     <div id="posts-container">
                         <!--les postes seront afficher ici-->
                     </div>
+
+                    <h1 class="forum-title">Lasted Threads</h1>
+
+                    <!-- Actions du forum -->
+
+                    <!-- Tableau des sujets -->
+                    <table class="topic-bubble floating-slow">
+                        <thead>
+                            <tr>
+                                <th>TOPIC</th>
+                                <th>AUTHOR</th>
+                                <th>REPLIES</th>
+                                <th>LAST MESSAGE</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            {{range .LastedThreads}}
+                            <tr>
+                                <td><a href="#" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td>{{.Author}}</td>
+                                <td>{{.Replies}}</td>
+                                <td>{{.Creation}}</td>
+                            </tr>
+                            {{end}}
+                        </tbody>
+                    </table>
+
+                    <div id="posts-container">
+                        <!--les postes seront afficher ici-->
+                    </div>
                 </div>
+
+                
 
                 <!--SIDEBAR-->
                 <div class="forum-sidebar">
