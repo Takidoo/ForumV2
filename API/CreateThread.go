@@ -12,7 +12,7 @@ func CreateThread(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Méthode Invalide", http.StatusBadRequest)
 		return
 	}
-	if r.FormValue("title") == "" || r.FormValue("category") == "" {
+	if r.FormValue("title") == "" || r.FormValue("category") == "" || r.FormValue("content") == "" {
 		http.Error(w, "Invalid Args", http.StatusBadRequest)
 		return
 	}
@@ -33,11 +33,16 @@ func CreateThread(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	query := `INSERT INTO threads (title, user_id, category) VALUES (?, ?, ?)`
-	_, qerr := Database.DB.Exec(query, r.FormValue("title"), user.ID, r.FormValue("category"))
+	result, qerr := Database.DB.Exec(query, r.FormValue("title"), user.ID, r.FormValue("category"))
 	if qerr != nil {
-		print(qerr.Error())
 		http.Error(w, "Impossible de créer le thread", http.StatusInternalServerError)
 		return
 	}
-	json.NewEncoder(w).Encode(map[string]string{"message": "Success"})
+	lastID, err := result.LastInsertId()
+	pResult := Forum.CreatePost(int(lastID), user.ID, r.FormValue("content"))
+	if !pResult {
+		http.Error(w, "Impossible de créer le premier messsage du thread", http.StatusInternalServerError)
+		return
+	}
+
 }

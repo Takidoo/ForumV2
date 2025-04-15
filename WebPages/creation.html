@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/Resources/layout.css">
     <link rel="stylesheet" href="/Resources/bubble_effect.css">
     <script src="/Resources/nav_form.js"></script>
+    <script src="/Resources/creation.js"></script>
 </head>
 <body>
   <!--HEADER PRINCIPAL-->
@@ -41,26 +42,26 @@
   </header>
   <div class="container">
     <h1>Créer un nouveau post</h1>
-    <form action="#" method="post" class="post-form">
+    <form id ="threadform" class="post-form">
       <label for="title">Titre du post</label>
       <input type="text" id="title" name="title" required>
 
       <label for="category">Catégorie</label>
       <select id="category" name="category" required>
         <option value="">-- Sélectionnez --</option>
-        <option value="discussion">Espagnol</option>
-        <option value="question">Français</option>
-        <option value="astuce">Italien</option>
-        <option value="question">Portugais</option>
-        <option value="astuce">Thai</option>
-        <option value="question">English</option>
+        <option value="1">Espagnol</option>
+        <option value="2">Français</option>
+        <option value="3">Italien</option>
+        <option value="4">Portugais</option>
+        <option value="5">Thai</option>
+        <option value="6">English</option>
   
       </select>
 
       <label for="content">Contenu</label>
       <textarea id="content" name="content" rows="8" required></textarea>
 
-      <button type="submit">Publier</button>
+      <button type="submit" id="pubbtn">Publier</button>
     </form>
   </div>
 </body>
