@@ -29,6 +29,7 @@ func main() {
 	http.HandleFunc("/admin", PageHandlers.AdminPageHandler)
 	http.HandleFunc("/login", PageHandlers.LoginHandler)
 	http.HandleFunc("/register", PageHandlers.RegisterHandler)
+	http.HandleFunc("/creation", PageHandlers.CreationHandler)
 
 	// Démarage du serveur
 	http.ListenAndServe(":80", nil)
