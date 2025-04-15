@@ -132,41 +132,34 @@
 
                 <!--SIDEBAR-->
                 <div class="forum-sidebar">
-                    <div class="sidebar-box sidebar-bubble floating">
-                        <div class="sidebar-title">DESCRIPTION</div>
-                        <div class="sidebar-content">
-                            <div class="forum-stats">
-                                <i class="fas fa-users"></i> 524 connecté(s)
-                            </div>
-                            <hr>
-                            <div class="info-section">
-                                <form id="postForm" class="bubble-effect">
-                                    <input type="text" id="title" placeholder="Title" name="title" required
-                                        class="input-bubble">
-                                    <input type="text" id="category" placeholder="Category" name="category"
-                                        class="input-bubble">
-                                    <input type="text" id="content" placeholder="Content" name="content" required
-                                        class="input-bubble">
-                                    <button type="submit" class="accent-button blue button-bubble">Post<i
-                                            class="fas fa-paper-plane"></i></button>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Rechercher un sujet, un auteur...">
+                        <button class="search-button">
+                          <span class="icon-search">🔍</span>
+                        </button>
                     </div>
+                    <div class="info-section">
+                        <h3>Langues populaires</h3>
+                        <div class="forum-links">
+                            <ul>
+                                <li><a href="#">Français (1020 sujets)</a></li>
+                                <li><a href="#">Anglais (870 sujets)</a></li>
+                                <li><a href="#">Espagnol (740 sujets)</a></li>
 
-                    <div class="sidebar-box sidebar-bubble floating-slow">
-                        <div class="sidebar-title">STATISTIC</div>
-                        <div class="sidebar-content">
-                            <p><i class="fas fa-chart-line"></i>1250 active members</p>
-                            <p><i class="fas fa-comment"></i>876 discussion topics</p>
-                            <p><i class="fas fa-reply"></i>15432 messages</p>
-                            <hr>
-                            <blockquote class="bubble-effect">
-                                "Language is the reflection of a people's culture."
-                            </blockquote>
+                            </ul>
+                         
                         </div>
                     </div>
-                </div>
+                    <div class="info-section">
+                        <h3>Filtrer les sujets</h3>
+                        <div class="filter-options">
+                          <button class="filter-button" data-filter="top-liked">🔥 Les plus likés</button>
+                          <button class="filter-button" data-filter="most-recent">🆕 Les plus récents</button>
+                          <button class="filter-button" data-filter="most-commented">💬 Les plus commentés</button>
+                        </div>
+                    </div>
+              
+                </div>  
 
             </div>
         </main>
