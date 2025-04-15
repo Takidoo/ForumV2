@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TandemTalk Language Learning</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="/Resources/variable.css" />
+  <link rel="stylesheet" href="/Resources/basic_initial.css" />
+  <link rel="stylesheet" href="/Resources/layout.css" />
+  <link rel="stylesheet" href="/Resources/bubble_effect.css" />
+  <script src="/Resources/nav_form.js"></script>
+</head>
+
+<body>
+  <div class="page-container">
+    <!--HEADER PRINCIPAL-->
+    <header class="main-header header-bubble floating-slow">
+      <div class="header-left">
+        <div class="logo">
+          <div class="logo-placeholder">TravelTandem</div>
+        </div>
+        <nav class="main-nav nav-bubble">
+          <button class="lang-btn" data-lang="fr">French</button>
+          <button class="lang-btn" data-lang="es">Spanish</button>
+          <button class="lang-btn" data-lang="it">Italian</button>
+          <button class="lang-btn" data-lang="pt">Portuguese</button>
+          <button class="lang-btn" data-lang="th">Thai</button>
+          <button class="lang-btn" data-lang="en">English</button>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <div class="auth-buttons">
+          <a href="/register" class="accent-button pink button-bubble">Register</a>
+          <a href="/login" class="accent-button blue button-bubble">Login</a>
+        </div>
+        <button class="button-bubble"><i class="fas fa-sun"></i></button>
+      </div>
+    </header>
+
+    <!--CONTENU PRINCIPAL-->
+    <main class="main-content" style="display: flex; padding: 2rem; gap: 2rem;">
+    
+      <!-- ZONE DES POSTS -->
+      <section class="forum-content" style="flex: 1;">
+        <div class="post-list">
+            <article class="post-card">
+              <div class="post-header">
+                <h2 class="post-title">How do you stay motivated while learning a new language?</h2>
+                <div class="post-meta">
+                  <span class="post-author">Posted by <strong>@Emily23</strong></span>
+                  <span class="post-date">April 10, 2025</span>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>I've been learning French for 3 months now and some days it just feels really hard to keep going. Any advice from more experienced learners?</p>
+              </div>
+              <div class="post-actions">
+                <button class="reaction-button">❤️ 123</button>
+                <button class="reaction-button">💬 34</button>
+              </div>
+            </article>
+          
+            <article class="post-card">
+              <div class="post-header">
+                <h2 class="post-title">Best YouTube channels for Spanish learners?</h2>
+                <div class="post-meta">
+                  <span class="post-author">Posted by <strong>@Carlos98</strong></span>
+                  <span class="post-date">April 9, 2025</span>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>Looking for Spanish channels that are engaging but still help improve listening skills. Any favorites?</p>
+              </div>
+              <div class="post-actions">
+                <button class="reaction-button">❤️ 78</button>
+                <button class="reaction-button">💬 21</button>
+              </div>
+            </article>
+          </div>
+      </section>
+      <aside class="forum-sidebar" style="width: 280px;">
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="Rechercher un sujet, un auteur..." />
+          <button class="search-button"><span class="icon-search">🔍</span></button>
+        </div>
+
+        <div class="info-section">
+          <h3>Langues populaires</h3>
+          <div class="forum-links">
+            <ul>
+              <li><a href="#">Français (1020 sujets)</a></li>
+              <li><a href="#">Anglais (870 sujets)</a></li>
+              <li><a href="#">Espagnol (740 sujets)</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h3>Filtrer les sujets</h3>
+          <div class="filter-options">
+            <button class="filter-button" data-filter="top-liked">🔥 Les plus likés</button>
+            <button class="filter-button" data-filter="most-recent">🆕 Les plus récents</button>
+            <button class="filter-button" data-filter="most-commented">💬 Les plus commentés</button>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!--FOOTER-->
+    <footer class="footer footer-bubble">
+      <div class="footer-content">
+        <p>&copy; 2025 TravelTandem - All rights reserved</p>
+        <div class="social-links">
+          <a href="#" class="button-bubble social-link"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="button-bubble social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="button-bubble social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
