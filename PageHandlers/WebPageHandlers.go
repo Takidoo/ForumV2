@@ -84,3 +84,11 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	tmpl.Execute(w, PageData)
 }
+func CreationHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("WebPages/creation.html")
+	if err != nil {
+		log.Println("Erreur lors du chargement de la page de création :", err)
+		return
+	}
+	tmpl.Execute(w, nil)
+}

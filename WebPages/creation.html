@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créer un post</title>
+  <link rel="stylesheet" href="/Resources/creation.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Créer un nouveau post</h1>
+    <form action="#" method="post" class="post-form">
+      <label for="title">Titre du post</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="category">Catégorie</label>
+      <select id="category" name="category" required>
+        <option value="">-- Sélectionnez --</option>
+        <option value="discussion">Espagnol</option>
+        <option value="question">Français</option>
+        <option value="astuce">Italien  </option>
+      </select>
+
+      <label for="content">Contenu</label>
+      <textarea id="content" name="content" rows="8" required></textarea>
+
+      <button type="submit">Publier</button>
+    </form>
+  </div>
+</body>
+</html>
