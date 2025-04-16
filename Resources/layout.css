@@ -258,7 +258,6 @@
     /*stucture header*/
     .main-header{
         flex-direction: row;
-        background: dodgerblue;;
         padding: var(--spacing-md) var(--spacing-lg);
     }
     .header-left{

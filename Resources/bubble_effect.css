@@ -16,7 +16,7 @@
 
 /*HEADER*/
 .header-bubble{
-    background: rgba(255, 255, 255, 0.85);
+    background: dodgerblue;
     border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
     border: var(--bubble-border);
     box-shadow: var(--bubble-shadow);
