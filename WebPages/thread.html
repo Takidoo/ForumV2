@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TandemTalk Language Learning</title>
-    <link rel="stylesheet" href="/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/Resources/variable.css">
     <link rel="stylesheet" href="/Resources/basic_initial.css">
     <link rel="stylesheet" href="/Resources/layout.css">
@@ -35,12 +35,8 @@
 
             <div class="header-right">
                 <div class="auth-buttons">
-                    {{if .IsLogged}}
-                        <br>
-                    {{else}}
-                        <a href="/register" class="accent-button pink button-bubble">Register</a>
-                        <a href="/login" class="accent-button blue button-bubble">Login</a>
-                    {{end}}
+                    <a href="/register" class="accent-button pink button-bubble">Register</a>
+                    <a href="/login" class="accent-button blue button-bubble">Login</a>
                 </div>
 
                 <button class="button-bubble">
@@ -49,54 +45,42 @@
             </div>
         </header>
 
-        <div class="forum-container">
-            <div class="post">
-                <div class="post-header">
-                    <div class="user-info">
-                        <h3 class="username">JeanDupont42</h3>
-                    </div>
-                    <div class="post-info">
-                        <span class="post-date">15 avril 2025, 14:30</span>
-                        <span class="post-number">#3254</span>
-                    </div>
+        <div class="forum-layout" style="display: flex; gap: 20px; align-items: flex-start; padding: 20px;">
+            {{range .Posts}}
+            <div class="forum-container" style="flex: 4;">
+                    <div class="post">
+                        <div class="post-header">
+                            <div class="user-info">
+                                <h3 class="username">{{.Owner}}</h3>
+                            </div>
+                            <div class="post-info">
+                                <span class="post-date">{{.Date}}</span>
+                                <span class="post-number">#{{.PostID}}</span>
+                            </div>
+                        </div>
+    
+                        <div class="post-content">
+                            <p>{{.Content}}</p>
+                        </div>
                 </div>
-        
-                <div class="post-content">
-                    <h2 class="post-title">Question sur le développement web</h2>
-                    <p>Bonjour à tous,</p>
-                    <p>Je suis en train d'apprendre le développement web et j'aimerais avoir quelques conseils sur les bonnes pratiques à suivre pour structurer mon projet.</p>
-                    <p>Avez-vous des recommandations pour un débutant comme moi ?</p>
-                    <p>Merci d'avance pour votre aide !</p>
-                </div>
-        
+                {{end}}
+
                 
-                <div class="post-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-                    <div class="post-reactions">
-                        <button class="reaction-btn"><i class="icon-like"></i> J'aime <span class="count">3</span></button>
-                    </div>
-                    <div class="post-actions">
-                        <button class="reply-btn" style="padding: 6px 12px; background-color: #eee; border-radius: 4px; border: none;">💬 Répondre</button>
-                    </div>
-                </div>
-        
-                
-                <div class="reply-form" style="display: none; margin-top: 10px;">
-                    <textarea placeholder="Écris ta réponse ici..." rows="4" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
-                    <button class="send-reply-btn" style="margin-top: 8px; padding: 6px 12px; background-color: #0099ff; color: white; border: none; border-radius: 4px;">Envoyer</button>
-                </div>
+            </div>
+
+
+            <!-- Zone d'affichage des réponses -->
+
+            <div class="reply-sidebar"
+                style="flex: 1; background: #f2f4f8; padding: 16px; border-radius: 8px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
+                <h3>Répondre au post</h3>
+                <textarea id="sidebar-reply-textarea" placeholder="Tape ta réponse ici..." rows="8"
+                    style="width: 100%; padding: 8px; margin-top: 10px; border-radius: 4px; border: 1px solid #ccc;"></textarea>
+                <button id="sidebar-reply-send" style="margin-top: 10px; padding: 8px 16px; background-color: #0099ff; color: white; border: none; border-radius: 4px;">Envoyer</button>
             </div>
         </div>
-        
-       
-        <script>
-            document.querySelectorAll('.reply-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const replyForm = btn.closest('.post').querySelector('.reply-form');
-                    replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
-                });
-            });
-        </script>
     </div>
+    <script src="/Resources/thread.js"></script>
 </body>
 
 </html>

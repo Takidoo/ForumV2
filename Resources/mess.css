@@ -1,5 +1,5 @@
  /* Container du forum */
-.forum-container {
+ .forum-container {
     max-width: 800px;
     margin: 0 auto;
 }
@@ -11,6 +11,10 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     overflow: hidden;
+}
+.forum-layout {
+    display: flex;
+    flex-direction: row;
 }
 
 /* En-tête du post */
@@ -153,4 +157,23 @@
 .reply-form textarea:focus {
     outline: none;
     border-color: #0099ff;
+}
+
+.mini-post {
+    background-color: #fff;
+    border-left: 4px solid #0099ff;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.mini-header {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.mini-content {
+    color: #555;
 }
