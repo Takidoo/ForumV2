@@ -1,0 +1,156 @@
+ /* Container du forum */
+.forum-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Style du post */
+.post {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+/* En-tête du post */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    color: #3498db;
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.post-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 12px;
+    color: #777;
+}
+
+/* Contenu du post */
+.post-content {
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.post-title {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.post-content p {
+    margin-bottom: 15px;
+}
+
+/* Pied du post */
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ebebeb;
+}
+
+.post-reactions {
+    display: flex;
+}
+
+.reaction-btn {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: #555;
+}
+
+.reaction-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.reaction-btn i {
+    margin-right: 5px;
+}
+
+.count {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.post-tags {
+    display: flex;
+}
+
+.tag {
+    background-color: #e1f0fa;
+    color: #3498db;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* Icônes simulées */
+.icon-like:before {
+    content: "♥";
+}
+
+.icon-reply:before {
+    content: "↩";
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 600px) {
+    .post-header {
+        flex-direction: column;
+    }
+    
+    .post-info {
+        margin-top: 10px;
+        align-items: flex-start;
+    }
+    
+    .post-footer {
+        flex-direction: column;
+    }
+    
+    .post-tags {
+        margin-top: 10px;
+    }
+}
+
+.reply-section {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.reply-btn:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.reply-form textarea:focus {
+    outline: none;
+    border-color: #0099ff;
+}
