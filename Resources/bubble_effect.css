@@ -74,6 +74,9 @@
     display: inline-block;
     text-align: center;
 }
+.button-bubble p{
+    margin: 0px;
+}
 .no-backdrop-filter .button-bubble{
     background: rgba(255, 255, 255, 0.9);
 }

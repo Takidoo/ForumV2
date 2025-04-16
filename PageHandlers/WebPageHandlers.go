@@ -41,8 +41,10 @@ func TestPageHandler(w http.ResponseWriter, r *http.Request) {
 func HomePageHandler(w http.ResponseWriter, r *http.Request) {
 	var tmpl, _ = template.ParseFiles("WebPages/forum.html")
 	if Forum.UserIsLogged(w, r) {
+		session, _ := r.Cookie("session_id")
+		user, _ := Forum.GetUser(session.Value)
 		tmpl.Execute(w, HomePageData{
-			Username:        "",
+			Username:        user.Username,
 			LastedThreads:   Forum.GetLastedThreads(10),
 			MostLikedThread: Forum.GetMostLikedThreads(10),
 			IsLogged:        true,

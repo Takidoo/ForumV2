@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,47 +22,39 @@
                     <div class="logo-placeholder">TravelTandem</div>
                 </div>
                 <nav class="main-nav nav-bubble">
-                    <a href="#">French</a>
-                    <a href="#">Spanish</a>
-                    <a href="#">Italian</a>
-                    <a href="#">Portuguese</a>
-                    <a href="#">Thai</a>
-                    <a href="#">English</a>
+                    <button class="lang-btn" data-lang="fr">French</button>
+                    <button class="lang-btn" data-lang="es">Spanish</button>
+                    <button class="lang-btn" data-lang="it">Italian</button>
+                    <button class="lang-btn" data-lang="pt">Portuguese</button>
+                    <button class="lang-btn" data-lang="th">Thai</button>
+                    <button class="lang-btn" data-lang="en">English</button>
                 </nav>
             </div>
 
             <div class="header-right">
                 <div class="auth-buttons">
                     {{if .IsLogged}}
-                    <br>
+                    <div class="button-bubble">
+                        <p>Connécté en tant que : {{.Username}}</p>
+                    </div>
                     {{else}}
                     <a href="/register" class="accent-button pink button-bubble">Register</a>
                     <a href="/login" class="accent-button blue button-bubble">Login</a>
                     {{end}}
                 </div>
-            
-                <button class="button-bubble">
-                    <i class="fas fa-sun">☀</i>
-                </button>
             </div>
         </header>
 
-    
+
 
         <!--CONTENU PRINCIPAL-->
+
         <main class="main-content">
             <div class="forum-layout">
                 <div class="forum-content">
-                                        <!-- Actions du forum -->
-                                        {{if .IsLogged}}
-                                        <div class="forum-actions">
-                                            <a href="/creation" class="accent-button bleu button-bubble"><i class="fas fa-plus-circle"></i>Nouveau sujet</a>
-                                        </div>
-                                        {{end}}
+                    <!-- Actions du forum -->
+                    
                     <h1 class="forum-title">Top Threads</h1>
-
-
-                    <!-- Tableau des sujets -->
                     <table class="topic-bubble floating-slow">
                         <thead>
                             <tr>
@@ -71,28 +64,23 @@
                                 <th>LAST MESSAGE</th>
                             </tr>
                         </thead>
-    
                         <tbody>
                             {{range .MostLikedThread}}
                             <tr>
-                                <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
-                                <td>{{.Author}}</td>
-                                <td>{{.Replies}}</td>
-                                <td>{{.Creation}}</td>
+                                <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i
+                                            class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td><i class="fas fa-user"></i> {{.Author}}</td>
+                                <td><i class="fas fa-comments"></i> {{.Replies}}</td>
+                                <td><i class="fas fa-clock"></i> {{.Creation}}</td>
                             </tr>
                             {{end}}
                         </tbody>
                     </table>
-
                     <div id="posts-container">
                         <!--les postes seront afficher ici-->
                     </div>
 
                     <h1 class="forum-title">Lasted Threads</h1>
-
-                    <!-- Actions du forum -->
-
-                    <!-- Tableau des sujets -->
                     <table class="topic-bubble floating-slow">
                         <thead>
                             <tr>
@@ -102,59 +90,54 @@
                                 <th>LAST MESSAGE</th>
                             </tr>
                         </thead>
-    
                         <tbody>
                             {{range .LastedThreads}}
                             <tr>
-                                <td><a href="thread?thread_id={{.ID}}" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
-                                <td>{{.Author}}</td>
-                                <td>{{.Replies}}</td>
-                                <td>{{.Creation}}</td>
+                                <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td><i class="fas fa-user"></i> {{.Author}}</td>
+                                <td><i class="fas fa-comments"></i> {{.Replies}}</td>
+                                <td><i class="fas fa-clock"></i> {{.Creation}}</td>
                             </tr>
                             {{end}}
                         </tbody>
                     </table>
 
                     <div id="posts-container">
-                        <!--les postes seront afficher ici-->
+
+
                     </div>
                 </div>
 
-                
+
 
                 <!--SIDEBAR-->
-                <div class="forum-sidebar">
-                    <div class="sidebar-box sidebar-bubble floating">
-                        <div class="sidebar-title">DESCRIPTION</div>
-                        <div class="sidebar-content">
-                            <div class="forum-stats">
-                                <i class="fas fa-users"></i> 524 connecté(s)
-                            </div>
-                            <hr>
-                            <div class="info-section">
-                                <form id="postForm" class="bubble-effect">
-                                    <input type="text" id="title" placeholder="Title" name="title" required class="input-bubble">
-                                    <input type="text" id="category" placeholder="Category" name="category" class="input-bubble">
-                                    <input type="text" id="content" placeholder="Content" name="content" required class="input-bubble">
-                                    <button type="submit" class="accent-button blue button-bubble">Post<i class="fas fa-paper-plane"></i></button>
-                                </form>
-                            </div>
+                <aside class="forum-sidebar" style="width: 280px;">
+                    <div class="search-bar">
+                        <form action="/search" method="POST">
+            <input type="text" class="search-input" name="input" placeholder="Rechercher un sujet, un auteur..." />
+            <button class="search-button"><span class="icon-search">🔍</span></button>
+          </form>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>Langues populaires</h3>
+                        <div class="forum-links">
+                            <ul>
+                                <li><a href="#">Français (1020 sujets)</a></li>
+                                <li><a href="#">Anglais (870 sujets)</a></li>
+                                <li><a href="#">Espagnol (740 sujets)</a></li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="sidebar-box sidebar-bubble floating-slow">
-                        <div class="sidebar-title">STATISTIC</div>
-                        <div class="sidebar-content">
-                            <p><i class="fas fa-chart-line"></i>1250 active members</p>
-                            <p><i class="fas fa-comment"></i>876 discussion topics</p>
-                            <p><i class="fas fa-reply"></i>15432 messages</p>
-                            <hr>
-                            <blockquote class="bubble-effect">
-                                "Language is the reflection of people's culture."
-                            </blockquote>
-                        </div>
+                    
+                    {{if .IsLogged}}
+                    <div class="forum-actions">
+                        <a href="/creation" class="accent-button bleu button-bubble"><i
+                        class="fas fa-plus-circle"></i>Nouveau sujet</a>
                     </div>
-                </div>
+                    {{end}} 
+                </aside>
 
             </div>
         </main>
@@ -164,11 +147,12 @@
                 <p>&copy; 2025 TravelTandem - All rights reserved</p>
                 <div class="social-links">
                     <a href="#" class="button-bubble social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="button-bubble social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" cla ss="button-bubble social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="button-bubble social-link"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </footer>
     </div>
 </body>
+
 </html>

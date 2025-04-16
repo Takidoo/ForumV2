@@ -38,6 +38,7 @@ body::before{
     z-index: -2; /*arrière-plan*/
 }
 
+
 /*liens*/
 a{
     text-decoration: none;
@@ -135,4 +136,46 @@ hr{
 }
 .social-links{
     margin-top: 10px;
+}
+
+
+  .topic-bubble {
+    width: 95%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+}
+
+.topic-bubble thead {
+    background-color: var(--accent-light, #f0f4f8);
+}
+
+.topic-bubble th, .topic-bubble td {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.topic-bubble tbody tr {
+    border-top: 1px solid #eee;
+    transition: background-color 0.2s ease;
+}
+
+.topic-bubble tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.topic-title {
+    color: #0077cc;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.topic-title i {
+    margin-right: 8px;
+    color: #0077cc;
 }

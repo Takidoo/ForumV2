@@ -115,7 +115,7 @@
     align-items: center;
     justify-content: center;
     grid-area: sidebar;
-    height: 500px;
+    height: 400px;
     background-color: white;
     border-radius: 15px;
     justify-content: start;
@@ -258,6 +258,7 @@
     /*stucture header*/
     .main-header{
         flex-direction: row;
+        background: dodgerblue;;
         padding: var(--spacing-md) var(--spacing-lg);
     }
     .header-left{
