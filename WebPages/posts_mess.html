@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TandemTalk Language Learning</title>
-    <link rel="stylesheet" href="/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/Resources/variable.css">
     <link rel="stylesheet" href="/Resources/basic_initial.css">
     <link rel="stylesheet" href="/Resources/layout.css">
@@ -77,18 +77,45 @@
         
                 
                 <div class="reply-form" style="display: none; margin-top: 10px;">
-                    <textarea placeholder="Écris ta réponse ici..." rows="4" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+                    <textarea class="reply-textarea" placeholder="Écris ta réponse ici..." rows="4" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
                     <button class="send-reply-btn" style="margin-top: 8px; padding: 6px 12px; background-color: #0099ff; color: white; border: none; border-radius: 4px;">Envoyer</button>
                 </div>
+                
+                <!-- Zone d'affichage des réponses -->
+                <div class="replies-container" style="margin-top: 15px;"></div>
             </div>
         </div>
         
-       
         <script>
-            document.querySelectorAll('.reply-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const replyForm = btn.closest('.post').querySelector('.reply-form');
-                    replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('.reply-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const replyForm = btn.closest('.post').querySelector('.reply-form');
+                        replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+                    });
+                });
+        
+                document.querySelectorAll('.send-reply-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const post = btn.closest('.post');
+                        const textarea = post.querySelector('.reply-textarea');
+                        const repliesContainer = post.querySelector('.replies-container');
+        
+                        const content = textarea.value.trim();
+                        if (content === "") return;
+        
+                        const replyDiv = document.createElement('div');
+                        replyDiv.classList.add('mini-reply');
+                        replyDiv.innerHTML = `
+                            <div class="mini-post">
+                                <div class="mini-header"><strong>TAKIDOOOOOOOOOOo</strong> – heure</div>
+                                <div class="mini-content">${content}</div>
+                            </div>
+                        `;
+        
+                        repliesContainer.appendChild(replyDiv);
+                        textarea.value = "";
+                    });
                 });
             });
         </script>
