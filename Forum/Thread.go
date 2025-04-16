@@ -10,9 +10,11 @@ import (
 type Thread struct {
 	ID       int    `json:"id"`
 	Title    string `json:"title"`
-	Author   string `json:"author"`
+	Author   string `json:"creation"`
+	Likes    int    `json:"likes"`
 	Replies  int    `json:"replies"`
 	Creation string `json:"creation"`
+	Category int    `json:"category"`
 }
 
 func GetLastedThreads(limit int) []Thread {

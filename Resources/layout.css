@@ -115,9 +115,11 @@
     align-items: center;
     justify-content: center;
     grid-area: sidebar;
-    height: 125%;
+    height: 500px;
     background-color: white;
     border-radius: 15px;
+    justify-content: start;
+
 }
 
 .search-bar {
@@ -126,11 +128,11 @@
     border-radius: 25px;
     overflow: hidden;
     margin-bottom: 15px;
+    margin-top: 20px;
   }
 
   .search-input {
     flex: 1;
-    padding: 10px 15px;
     border: none;
     outline: none;
     background-color: #fafafa;
@@ -139,7 +141,6 @@
   .search-button {
     background-color: #366EDF;
     color: white;
-    padding: 0 15px;
     border: none;
     cursor: pointer;
   }

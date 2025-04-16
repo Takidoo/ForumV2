@@ -15,6 +15,12 @@ type HomePageData struct {
 	IsAdmin         bool
 }
 
+type SearchPageData struct {
+	Result   []Forum.Thread
+	IsLogged bool
+	IsAdmin  bool
+}
+
 type AdminPageData struct {
 	Username string
 }
@@ -29,21 +35,16 @@ func TestPageHandler(w http.ResponseWriter, r *http.Request) {
 }
 func HomePageHandler(w http.ResponseWriter, r *http.Request) {
 	var tmpl, _ = template.ParseFiles("WebPages/forum.html")
-	cookie, err := r.Cookie("session_id")
-	if err == nil {
-		user, err := Forum.GetUser(cookie.Value)
-		if err == nil {
-			tmpl.Execute(w, HomePageData{
-				Username:        user.Username,
-				LastedThreads:   Forum.GetLastedThreads(10),
-				MostLikedThread: Forum.GetMostLikedThreads(10),
-				IsLogged:        true,
-				IsAdmin:         user.Role == 2,
-			})
-			return
-		}
+	if Forum.UserIsLogged(w, r) {
+		tmpl.Execute(w, HomePageData{
+			Username:        "",
+			LastedThreads:   Forum.GetLastedThreads(10),
+			MostLikedThread: Forum.GetMostLikedThreads(10),
+			IsLogged:        true,
+			IsAdmin:         false,
+		})
+		return
 	}
-
 	tmpl.Execute(w, HomePageData{
 		Username:        "",
 		LastedThreads:   Forum.GetLastedThreads(10),
@@ -51,6 +52,7 @@ func HomePageHandler(w http.ResponseWriter, r *http.Request) {
 		IsLogged:        false,
 		IsAdmin:         false,
 	})
+
 }
 func AdminPageHandler(w http.ResponseWriter, r *http.Request) {
 	session, _ := r.Cookie("session_id")
@@ -96,8 +98,39 @@ func CreationHandler(w http.ResponseWriter, r *http.Request) {
 func SearchHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("WebPages/search.html")
 	if err != nil {
-		log.Println("Erreur lors du chargement de la page de création :", err)
+		http.Error(w, "Internal error", http.StatusInternalServerError)
 		return
 	}
-	tmpl.Execute(w, nil)
+
+	if r.Method == http.MethodPost {
+		if Forum.UserIsLogged(w, r) {
+			tmpl.Execute(w, SearchPageData{
+				Result:   Forum.Search(r.FormValue("input")),
+				IsLogged: true,
+				IsAdmin:  false,
+			})
+			return
+		}
+		tmpl.Execute(w, SearchPageData{
+			Result:   Forum.Search(r.FormValue("input")),
+			IsLogged: false,
+			IsAdmin:  false,
+		})
+		return
+	}
+
+	if Forum.UserIsLogged(w, r) {
+		tmpl.Execute(w, SearchPageData{
+			Result:   Forum.Search(r.FormValue("input")),
+			IsLogged: true,
+			IsAdmin:  false,
+		})
+		return
+	}
+	tmpl.Execute(w, SearchPageData{
+		Result:   Forum.Search(r.FormValue("input")),
+		IsLogged: false,
+		IsAdmin:  false,
+	})
+
 }

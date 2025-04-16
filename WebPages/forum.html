@@ -53,9 +53,11 @@
             <div class="forum-layout">
                 <div class="forum-content">
                                         <!-- Actions du forum -->
+                                        {{if .IsLogged}}
                                         <div class="forum-actions">
                                             <a href="/creation" class="accent-button bleu button-bubble"><i class="fas fa-plus-circle"></i>Nouveau sujet</a>
                                         </div>
+                                        {{end}}
                     <h1 class="forum-title">Top Threads</h1>
 
 
