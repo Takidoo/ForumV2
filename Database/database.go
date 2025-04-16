@@ -64,6 +64,7 @@ func CreateTables() {
 			visible BOOLEAN DEFAULT true,
 			category INTEGER NOT NULL,
 			likes INTEGER DEFAULT 0,
+			replies INTEGER DEFAULT 0,
 			FOREIGN KEY(category) REFERENCES categories(id) ON DELETE CASCADE
 			FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 		);`,
@@ -89,7 +90,6 @@ func CreateTables() {
 		CREATE TABLE IF NOT EXISTS categories (
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
 			name TEXT UNIQUE NOT NULL
-
 	);
 		`,
 		`

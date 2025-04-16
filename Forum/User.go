@@ -3,6 +3,7 @@ package Forum
 import (
 	"Forum/Database"
 	"fmt"
+	"net/http"
 )
 
 type User struct {
@@ -20,6 +21,28 @@ func GetUser(session string) (User, error) {
 	}
 	_ = Database.DB.QueryRow("SELECT username, role FROM users WHERE id = ?", user.ID).Scan(&user.Username, &user.Role)
 	return user, nil
+}
+func GetUserById(user_id int) User {
+	var user User
+	err := Database.DB.QueryRow("SELECT username, role FROM users WHERE id = ?", user_id).Scan(&user.Username, &user.Role)
+	if err != nil {
+		return User{}
+	}
+	return user
+}
+
+func UserIsLogged(w http.ResponseWriter, r *http.Request) bool {
+	session, err := r.Cookie("session_id")
+	if err != nil {
+		return false
+	}
+	var user_id int
+	query := `SELECT user_id FROM sessions WHERE token = ?`
+	err = Database.DB.QueryRow(query, session.Value).Scan(&user_id)
+	if err != nil {
+		return false
+	}
+	return true
 }
 func UserIsAdmin(session string) bool {
 	var userID int

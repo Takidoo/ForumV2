@@ -114,20 +114,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    justify-content: start;
     grid-area: sidebar;
-    height: 450px;
+    height: 400px;
     background-color: white;
     border-radius: 15px;
+    justify-content: start;
+
 }
 
 .search-bar {
     display: flex;
     border: 1px solid #ccc;
-    margin-top: 20px;
     border-radius: 25px;
     overflow: hidden;
     margin-bottom: 15px;
+    margin-top: 20px;
   }
 
   .search-input {
@@ -257,6 +258,7 @@
     /*stucture header*/
     .main-header{
         flex-direction: row;
+        background: dodgerblue;;
         padding: var(--spacing-md) var(--spacing-lg);
     }
     .header-left{

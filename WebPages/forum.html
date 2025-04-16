@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TandemTalk Language Learning</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="Resources/variable.css">
-    <link rel="stylesheet" href="Resources/basic_initial.css">
-    <link rel="stylesheet" href="Resources/layout.css">
-    <link rel="stylesheet" href="Resources/bubble_effect.css">
-
-    <script src="Resources/nav_form.js"></script>
+    <link rel="stylesheet" href="/Resources/variable.css">
+    <link rel="stylesheet" href="/Resources/basic_initial.css">
+    <link rel="stylesheet" href="/Resources/layout.css">
+    <link rel="stylesheet" href="/Resources/bubble_effect.css">
+    <script src="/Resources/nav_form.js"></script>
 </head>
 
 <body>
@@ -34,110 +33,107 @@
 
             <div class="header-right">
                 <div class="auth-buttons">
+                    {{if .IsLogged}}
+                    <br>
+                    {{else}}
                     <a href="/register" class="accent-button pink button-bubble">Register</a>
                     <a href="/login" class="accent-button blue button-bubble">Login</a>
+                    {{end}}
                 </div>
 
-                <button class="button-bubble">
-                    <i class="fas fa-sun">☀</i>
-                </button>
+                <div class="button-bubble">
+                    <p>Connécté en tant que : {{pseduo}}</p>
+                </div>
             </div>
         </header>
 
 
+
         <!--CONTENU PRINCIPAL-->
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                const forumTitles = {
-                    fr: "Forum Français",
-                    es: "Foro Español",
-                    it: "Forum Italiano",
-                    pt: "Fórum Português",
-                    th: "ฟอรั่มภาษาไทย",
-                    en: "English Forum"
-                };
-        
-                const newTopicTexts = {
-                    fr: "Nouveau sujet",
-                    es: "Nuevo tema",
-                    it: "Nuovo argomento",
-                    pt: "Novo tópico",
-                    th: "หัวข้อใหม่",
-                    en: "New Topic"
-                };
-        
-                const langButtons = document.querySelectorAll(".lang-btn");
-                const postsContainer = document.getElementById("posts-container");
-        
-                const contentByLanguage = {
-                    fr: [
-                        { author: "Jean Dupont", subject: "Apprendre l'anglais", date: "2025-01-01" },
-                        { author: "Marie Curie", subject: "Les langues latines", date: "2025-02-15" }
-                    ],
-                    es: [
-                        { author: "Carlos García", subject: "Aprender francés", date: "2025-03-10" },
-                        { author: "Lucía Fernández", subject: "Idiomas y cultura", date: "2025-04-20" }
-                    ],
-                    it: [
-                        { author: "Giovanni Rossi", subject: "Imparare lo spagnolo", date: "2025-05-05" },
-                        { author: "Maria Bianchi", subject: "Lingue romanze", date: "2025-06-25" }
-                    ],
-                    pt: [
-                        { author: "João Silva", subject: "Aprender italiano", date: "2025-07-15" },
-                        { author: "Ana Costa", subject: "Cultura e idiomas", date: "2025-08-30" }
-                    ],
-                    th: [
-                        { author: "Somchai Wong", subject: "เรียนภาษาอังกฤษ", date: "2025-09-10" },
-                        { author: "Suda Lek", subject: "ภาษาและวัฒนธรรม", date: "2025-10-05" }
-                    ],
-                    en: [
-                        { author: "John Smith", subject: "Learning Spanish", date: "2025-11-20" },
-                        { author: "Jane Doe", subject: "Languages and Culture", date: "2025-12-15" }
-                    ]
-                };
-        
-                langButtons.forEach(button => {
-                    button.addEventListener("click", () => {
-                        const selectedLang = button.getAttribute("data-lang");
-                        const forumTitle = forumTitles[selectedLang] || "Forum";
-                        const newTopicText = newTopicTexts[selectedLang] || "New Topic";
-        
-                        const titleContainer = `
-                            <div class="forum-header">
-                                <h2>${forumTitle}</h2>
-                                <button class="accent-button green button-bubble">${newTopicText}</button>
-                            </div>
-                        `;
-        
-                        const posts = contentByLanguage[selectedLang] || [];
-                        postsContainer.innerHTML = titleContainer + posts.map(post => `
-                            <div id="div">
-                                <div id="div4">${post.author}</div>
-                                <div id="div3">${post.subject}</div>
-                                <div id="div4">${post.date}</div>
-                            </div>
-                        `).join("");
-                    });
-                });
-            });
-        </script>
+
         <main class="main-content">
             <div class="forum-layout">
-                <div id="language-nav" class="forum-content">
+                <div class="forum-content">
+                    <!-- Actions du forum -->
+                    
+                    <h1 class="forum-title">Top Threads</h1>
+                    <table class="topic-bubble floating-slow">
+                        <thead>
+                            <tr>
+                                <th>TOPIC</th>
+                                <th>AUTHOR</th>
+                                <th>REPLIES</th>
+                                <th>LAST MESSAGE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{range .MostLikedThread}}
+                            <tr>
+                                <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i
+                                            class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td><i class="fas fa-user"></i> {{.Author}}</td>
+                                <td><i class="fas fa-comments"></i> {{.Replies}}</td>
+                                <td><i class="fas fa-clock"></i> {{.Creation}}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i
+                                            class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td><i class="fas fa-user"></i> {{.Author}}</td>
+                                <td><i class="fas fa-comments"></i> {{.Replies}}</td>
+                                <td><i class="fas fa-clock"></i> {{.Creation}}</td>
+                            </tr>
+                            {{end}}
+                        </tbody>
+                    </table>
                     <div id="posts-container">
-                        
+                        <!--les postes seront afficher ici-->
+                    </div>
+
+                    <h1 class="forum-title">Lasted Threads</h1>
+                    <table class="topic-bubble floating-slow">
+                        <thead>
+                            <tr>
+                                <th>TOPIC</th>
+                                <th>AUTHOR</th>
+                                <th>REPLIES</th>
+                                <th>LAST MESSAGE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{range .LastedThreads}}
+                            <tr>
+                                <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td><i class="fas fa-user"></i> {{.Author}}</td>
+                                <td><i class="fas fa-comments"></i> {{.Replies}}</td>
+                                <td><i class="fas fa-clock"></i> {{.Creation}}</td>
+                            </tr>
+                            <tr>
+                                <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td><i class="fas fa-user"></i> {{.Author}}</td>
+                                <td><i class="fas fa-comments"></i> {{.Replies}}</td>
+                                <td><i class="fas fa-clock"></i> {{.Creation}}</td>
+                            </tr>
+                            {{end}}
+                        </tbody>
+                    </table>
+
+                    <div id="posts-container">
+
 
                     </div>
                 </div>
 
+
+
                 <!--SIDEBAR-->
-                <div class="forum-sidebar">
+                <aside class="forum-sidebar" style="width: 280px;">
                     <div class="search-bar">
-                        <input type="text" class="search-input" placeholder="Rechercher un sujet, un auteur...">
-                        <button class="search-button">
-                          <span class="icon-search">🔍</span>
-                        </button>
+                        <form>
+                            <input type="text" class="search-input" placeholder="Rechercher un sujet, un auteur..." />
+                            <button class="search-button"><span class="icon-search">🔍</span></button>
+                        </form>
                     </div>
+
                     <div class="info-section">
                         <h3>Langues populaires</h3>
                         <div class="forum-links">
@@ -145,21 +141,18 @@
                                 <li><a href="#">Français (1020 sujets)</a></li>
                                 <li><a href="#">Anglais (870 sujets)</a></li>
                                 <li><a href="#">Espagnol (740 sujets)</a></li>
-
                             </ul>
-                         
                         </div>
                     </div>
-                    <div class="info-section">
-                        <h3>Filtrer les sujets</h3>
-                        <div class="filter-options">
-                          <button class="filter-button" data-filter="top-liked">🔥 Les plus likés</button>
-                          <button class="filter-button" data-filter="most-recent">🆕 Les plus récents</button>
-                          <button class="filter-button" data-filter="most-commented">💬 Les plus commentés</button>
-                        </div>
+
+                    
+                    {{if .IsLogged}}
+                    <div class="forum-actions">
+                        <a href="/creation" class="accent-button bleu button-bubble"><i
+                                class="fas fa-plus-circle"></i>Nouveau sujet</a>
                     </div>
-              
-                </div>  
+                    {{end}} 
+                </aside>
 
             </div>
         </main>

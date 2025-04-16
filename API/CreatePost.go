@@ -3,8 +3,8 @@ package API
 import (
 	"Forum/Database"
 	"Forum/Forum"
-	"encoding/json"
 	"net/http"
+	"strconv"
 )
 
 func CreatePost(w http.ResponseWriter, r *http.Request) {
@@ -32,10 +32,6 @@ func CreatePost(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Cannot get user info", http.StatusInternalServerError)
 		return
 	}
-	_, qerr := Database.DB.Exec(`INSERT INTO posts (thread_id, user_id, content) VALUES (?, ?, ?)`, thread_id, user.ID, message)
-	if qerr != nil {
-		http.Error(w, "Cannot create post", http.StatusInternalServerError)
-		return
-	}
-	json.NewEncoder(w).Encode(map[string]string{"message": "Success"})
+	tid, _ := strconv.Atoi(thread_id)
+	Forum.CreatePost(tid, user.ID, message)
 }
