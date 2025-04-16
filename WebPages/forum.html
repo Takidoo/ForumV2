@@ -75,7 +75,7 @@
                         <tbody>
                             {{range .MostLikedThread}}
                             <tr>
-                                <td><a href="#" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
                                 <td>{{.Author}}</td>
                                 <td>{{.Replies}}</td>
                                 <td>{{.Creation}}</td>
@@ -106,7 +106,7 @@
                         <tbody>
                             {{range .LastedThreads}}
                             <tr>
-                                <td><a href="#" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td><a href="thread?thread_id={{.ID}}" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
                                 <td>{{.Author}}</td>
                                 <td>{{.Replies}}</td>
                                 <td>{{.Creation}}</td>

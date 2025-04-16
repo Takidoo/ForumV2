@@ -6,10 +6,8 @@ import (
 )
 
 func Search(input string) []Thread {
-	print("Searching...")
 	var result []Thread
 	if input != "" {
-		print("Search by name")
 		SearchByName(input, &result)
 	}
 	return result
@@ -21,15 +19,12 @@ func SearchByName(input string, threads *[]Thread) {
 	if err != nil {
 		print(err.Error())
 		if err == sql.ErrNoRows {
-			print("recherche de merde")
 		}
 		return
 	}
-	print("test")
 	defer rows.Close()
 
 	for rows.Next() {
-		print("cool")
 		var thread Thread
 		var userID int
 		var time string
@@ -38,5 +33,4 @@ func SearchByName(input string, threads *[]Thread) {
 		thread.Creation = TimeAgo(time)
 		*threads = append(*threads, thread)
 	}
-	print("test2")
 }

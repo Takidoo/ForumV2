@@ -21,6 +21,11 @@ type SearchPageData struct {
 	IsAdmin  bool
 }
 
+type ThreadPageData struct {
+	Posts    []Forum.Post
+	IsLogged bool
+}
+
 type AdminPageData struct {
 	Username string
 }
@@ -133,4 +138,23 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		IsAdmin:  false,
 	})
 
+}
+
+func ThreadHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, _ := template.ParseFiles("WebPages/thread.html")
+	if !Forum.CheckIfThreadExist(r.URL.Query().Get("thread_id")) {
+		http.Error(w, "Invalid Thread ID", http.StatusBadRequest)
+		return
+	}
+	if Forum.UserIsLogged(w, r) {
+		tmpl.Execute(w, ThreadPageData{
+			Posts:    Forum.GetThreadPosts(r.URL.Query().Get("thread_id")),
+			IsLogged: true,
+		})
+		return
+	}
+	tmpl.Execute(w, ThreadPageData{
+		Posts:    Forum.GetThreadPosts(r.URL.Query().Get("thread_id")),
+		IsLogged: false,
+	})
 }

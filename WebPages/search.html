@@ -53,7 +53,7 @@
             {{range .Result}}
             <article class="post-card">
               <div class="post-header">
-                <h2 class="post-title">{{.Title}}</h2>
+                <h2 class="post-title"><a href="/thread?thread_id={{.ID}}">{{.Title}}</a></h2>
                 <div class="post-meta">
                   <span class="post-author">Posted by <strong>@{{.Author}}</strong></span>
                   <span class="post-date">{{.Creation}}</span>
