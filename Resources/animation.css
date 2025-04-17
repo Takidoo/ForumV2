@@ -1,31 +1,31 @@
-/*ANIMATION STYLE APPARENCE BULLES*/
-
-/*flottement des éléments*/
-@keyframes float{
-    0%{
-        transform: translateY(0);
-    }
-    50%{
-        transform: translateY(-0.625rem);
-    }
-    100%{
-        transform: translateY(0);
-    }
+/*FLOTTEMENTS ET PULSATIONS DES BLOCS*/
+.floating-slow{
+    animation: float-slow 7s ease-in-out infinite;
 }
 
+.pulsing{
+    animation: pulse 5s ease-in-out infinite;
+}
+
+.scale-in-center-normal { 
+    animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.23s 1 normal both; 
+}
+
+/*PARCOURS DE L'ANIMATION*/
+/*animations de flottement*/
 @keyframes float-slow {
     0%{
         transform: translateY(0);
     }
     50%{
-        transform: translateY(-0.9375rem);
+        transform: translateY(-0.9155rem);
     }
     100%{
         transform: translateY(0);
     }
 }
 
-/*pulsations douces*/
+/*animation de pulsation*/
 @keyframes pulse {
     0%{
         transform: scale(1);
@@ -41,38 +41,74 @@
     }
 }
 
+@keyframes scale-in-center {0% { transform: scale(0); opacity: 1; } 100% { transform: scale(1); opacity: 1;} }
 
-/*CLASSES UTILISEES POUR LES ANIMATIONS*/
-.floating{
-    animation: float 8s ease-in-out infinite;
+/*EFFET POUR L'AUTHENTIFICATION*/
+
+/*pour les éléments rotatifs d'arrière-plan*/
+.rotate-bg{
+    animation: rotate 15s linear infinite;
+}
+.rotate-bg2{
+    animation: rotate 20s linear infinite;
 }
 
-.floating-slow{
-    animation: float-slow 12s ease-in-out infinite;
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }
 
-.pulsing{
-    animation: pulse 5s ease-in-out infinite;
-}
-
-/*animation de transitions login/register*/
-.animation{
-    transition: all 0.5s ease;
-}
-
-/*animation de titre*/
-.title-animation{
-    position: relative;
-    display: inline-block;
-}
-
-.title-animation:hover::after{
-    transform: scaleX(1);
-    transform-origin: bottom left;
+/*EFFET POUR LE CONTENEUR DU FORMULAIRE*/
+/*.wrapper{
+    animation: fadeIn 1s ease;
 }
 
 /*animation de fondu*/
-@keyframes fadeIn{
+/*@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*TRANSITION ENTRE LOGIN ET REGISTER*/
+.animation{
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/*EFFET POUR LES FORMULAIRE ACTIFS OU NON-ACTIFS*/
+/*.auth-layout:not(.active) .info-text.login .animation{
+    animation: slideInRight 0.5s ease forwards;
+}
+.auth-layout.active .info-text.register .animation{
+    animation: slideInLeft 0.5s ease forwards;
+}*/
+.auth-layout:not(.active) .form-box.login .animation{
+    animation: slideIn 0.5s ease forwards;
+}
+.auth-layout.active .form-box.register .animation{
+    animation: slideIn 0.5s ease forwards;
+}
+
+/*délais avant l'animation*/
+.animation:nth-child(1){animation-delay: 0.1s;}
+.animation:nth-child(2){animation-delay: 0.2s;}
+.animation:nth-child(3){animation-delay: 0.3s;}
+.animation:nth-child(4){animation-delay: 0.4s;}
+.animation:nth-child(5){animation-delay: 0.5s;}
+
+
+/*TRANSITIONS DE SLIDES*/
+@keyframes slideIn{
     from{
         opacity: 0;
         transform: translateY(20px);
@@ -83,14 +119,63 @@
     }
 }
 
-.fade-in{
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
+/*@keyframes slideInRight{
+    from{
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideInLeft{
+    from{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-/*délais avant l'animation*/
-.delay-1{animation-delay: 0.2s;}
-.delay-2{animation-delay: 0.4s;}
-.delay-3{animation-delay: 0.6s;}
-.delay-4{animation-delay: 0.8s;}
-.delay-5{animation-delay: 1s;}
+
+
+
+
+
+
+
+
+
+
+
+
+/*animation de titre*/
+/*.title-animation{
+    position: relative;
+    display: inline-block;
+}
+
+.title-animation:hover::after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+
+
+
+/*animation de basculement pour la tablet et le desktop*/
+
+/*.auth-layout.active .info-text.login{
+    transform: translateX(100%);
+    opacity: 0;
+}
+.auth-layout.active .info-text.register{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+

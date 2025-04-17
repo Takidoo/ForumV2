@@ -1,6 +1,4 @@
-/*MISE EN PAGE PRINCIPALE*/
-
-/*structure de la page principale*/
+/*STRUCTURE DE LA PAGE FORUM*/
 .page-container{
     display: grid;
     grid-template-areas: 
@@ -15,17 +13,7 @@
     z-index: 1;
 }
 
-/*conteneur principal*/
-.main-content{
-    grid-area: main;
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: var(--spacing-lg);
-    gap: var(--spacing-lg);
-    position: relative;
-}
-
-/*header*/
+/*LE HAUT DE PAGE*/
 .main-header{
     grid-area: header;
     position: sticky; /*conserve sa position dans la page*/
@@ -71,6 +59,7 @@
     padding: var(--spacing-xs) var(--spacing-sm);
 }
 
+/*LA DEUXIEME BARRE DE NAVIGATION*/
 .sub-header{
     grid-area: subheader;
     overflow-x: auto;
@@ -88,15 +77,17 @@
     align-items: center;
 }
 
-/*footer*/
-.footer{
-    grid-area: footer;
+/*LE CONTENU PRINCIPAL*/
+.main-content{
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr;
     padding: var(--spacing-lg);
-    text-align: center;
-    margin-top: var(--spacing-lg);
+    gap: var(--spacing-lg);
+    position: relative;
 }
 
-/*STRUCTURE FORUM*/
+/*LA STRUCTURE DU FORUM*/
 .forum-layout{
     display: grid;
     grid-template-areas: 
@@ -110,17 +101,33 @@
     grid-area: content;
 }
 .forum-sidebar{
+    grid-area: sidebar;
+}
+
+/*LES BOUTONS D'ACTION DANS LE FORUM*/
+.forum-actions{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    grid-area: sidebar;
-    height: 400px;
-    background-color: white;
-    border-radius: 15px;
-    justify-content: start;
-
+    justify-content: flex-start;
+    min-height: auto;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
 }
+
+/*LE BAS DE PAGE*/
+.footer{
+    grid-area: footer;
+    padding: var(--spacing-lg);
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+
+
+
+
+
 
 .search-bar {
     display: flex;
@@ -174,82 +181,10 @@
     font-weight: bold;
   }
 
-/*boutons action du forum*/
-.forum-actions{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: auto;
-    padding: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-}
-
-/*STRUCTURE POUR LE FORMULAIRE D'AUTHENTIFICATION*/
-.auth-layout{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: var(--spacing-md);
-}
-
-.wrapper{ /*conteneur de formulaires*/
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-    min-height: 450px;
-    overflow: hidden;
-    margin-bottom: var(--spacing-lg);
-}
-
-/*formulaire login/register*/
-.form-box{
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: var(--spacing-xl);
-    transition: all 0.5s ease;
-}
-.form-box.login{
-    left: 0;
-}
-.form-box.register{
-    right: -100%; /*sort de la page visible*/
-    opacity: 0;
-    pointer-events: none; /*désactive les interaction avec l'élément*/
-}
-
-/*basculement entre login et register*/
-.wrapper.active .form-box.login{
-    left: -100%;
-    opacity: 0;
-    pointer-events: none;
-}
-.wrapper.active .form-box.register{ /*rend visible register*/
-    right: 0; 
-    opacity: 1;
-    pointer-events: all; /*inclus tous les éléments*/
-}
-
-/*message d'accueil ou d'information complémentaires de l'authentification*/
-.info-text{
-    display: none;
-}
 
 
-/*STRUCTURE DE LA PAGE ADMIN*/
-.admin-layout{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md);
-}
+
+
 
 
 
@@ -258,7 +193,6 @@
     /*stucture header*/
     .main-header{
         flex-direction: row;
-        background: dodgerblue;;
         padding: var(--spacing-md) var(--spacing-lg);
     }
     .header-left{
@@ -300,61 +234,6 @@
         justify-content: space-between;
         margin-bottom: var(--spacing-lg);
     }
-
-    /*authentification*/
-    .wrapper{
-        max-width: 650px;
-    }
-
-    /*éléments du formulaire*/
-    .form-box{
-        width: 50%;
-    }
-    .form-box.login{
-        padding: 0 var(--spacing-xl) 0 var(--spacing-lg);
-    }
-    .form-box.register{
-        padding: 0 var(--spacing-lg) 0 var(--spacing-xl);
-        right: 0;
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    /*informations*/
-    .info-text{
-        position: absolute;
-        top: 0;
-        width: 50%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: var(--spacing-lg);
-    }
-    .info-text.login{
-        right: 0;
-        text-align: center;
-    }
-    .info-text.register{
-        left: 0;
-        text-align: center;
-        pointer-events: none;
-        opacity: 0;
-    }
-    
-    .wrapper.active .info-text.login{
-        opacity: 0;
-        pointer-events: none;
-    }
-    .wrapper.active .info-text.register{
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    /*admin*/
-    .admin-layout{
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 
@@ -382,34 +261,19 @@
     /*Forum*/
     .forum-layout{
         grid-template-columns: 3fr 1fr;
-    }
-
-    /*authentification*/
-    .wrapper{
-        max-width: 750px;
-    }
-
-    /*formulaires*/
-    .form-box, .info-text{
-        padding: var(--spacing-xl);
-    }
-
-    /*admin*/
-    .admin-layout{
-        grid-template-columns: repeat(3, 1fr); /*1fr 1fr 1fr*/
-    }
+    }   
 }
 
-.post-card {
+/*.post-card {
     background-color: white;
     border-radius: 15px; /* même valeur que la sidebar */
-    padding: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* ombre douce vers l’extérieur */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+/*    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* ombre douce vers l'extérieur */
+/*    transition: transform 0.2s ease, box-shadow 0.2s ease;
     margin-bottom: 20px;
 }
   
   .post-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15); /* un peu plus d’ombre au hover */
-  }
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15); /* un peu plus d'ombre au hover */
+/*  }

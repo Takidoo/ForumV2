@@ -1,20 +1,39 @@
 /*APPARENCE EN BULLE FLOUTEE DES BLOCK DE LA PAGE*/
 
-/*ELEMENTS DIV*/
+/*STYLE COMMUN LEGE*/
 .bubble-effect{
-    background: var(--bubble-bg);
-    border-radius: var(--border-radius-md);
-    border: var(--bubble-border);
-    box-shadow: var(--bubble-shadow);
-    backdrop-filter: blur(var(--bubble-blur));
-    -webkit-backdrop-filter: blur(var(--bubble-blur)); /*effet de flou avec fallback pou les navigateurs compatibles*/
+    position: relative;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 15px;
+    margin: var(--spacing-md) 0;
     transition: all 0.3s ease;
 }
-.no-backdrop-filter .bubble-effect{
-    background: rgba(255, 255, 255, 0.88); /*plus opaque pour compenser l'absence de compatibilité de flou du navigateur*/
+.bubble-effect:before{
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.15) transparent transparent;
+}
+.bubble-effect:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) transparent transparent;
 }
 
-/*HEADER*/
+/*FALLBACK POUR LES NAVIGATEUR SANS BACKDROP-FILTER*/
+@supports not (backdrop-filter: blur(10px)){
+    .wrapper, .form-box, .bubble-effect, .auth-logo-container{
+        background: rgba(255, 255, 255, 0.95);
+    }
+}
+
+/*EFFET SPECIFIQUE AU HEADER*/
 .header-bubble{
     background: rgba(255, 255, 255, 0.85);
     border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
@@ -23,22 +42,142 @@
     backdrop-filter: blur(var(--bubble-blur));
     -webkit-backdrop-filter: blur(var(--bubble-blur));
 }
-.no-backdrop-filter .header-bubble{
-    background: rgba(255, 255, 255, 0.95);
-}
 
-/*BARRE DE NAVIGATION*/
+/*EFFET SPECIFIQUE A LA BARRE DE NAVIGATION*/
 .nav-bubble a{
     transition: all 0.3s ease;
 }
 .nav-bubble a:hover{
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.537);
     border-radius: var(--border-radius-sm);
 }
 
+/*EFFET SPECIFIQUE A LA SIDEBAR*/
+.sidebar-bubble{
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(var(--bubble-blur));
+    border: var(--bubble-border);
+    box-shadow: var(--bubble-shadow);
+}
+
+/*EFFET SPECIFIQUE SUR LES SUJETS DE CONVERSATION*/
+.topic-bubble{
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(var(--bubble-blur));
+    border: var(--bubble-border);
+    box-shadow: var(--bubble-shadow);
+    width: 100%;
+    border-collapse: collapse;
+}
+.topic-bubble th, .topic-bubble td{
+    padding: var(--spacing-sm);
+    text-align: left;
+}
+.topic-bubble thead{
+    background-color: rgba(44, 62, 80, 0.1);
+}
+.topic-bubble tbody tr{
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+.topic-bubble tbody tr:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/*EFFET SUR LES BOUTONS*/
+.header-right.button-bubble{
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-color: rgba(228, 198, 175, 0.555);
+    backdrop-filter: blur(var(--bubble-blur));
+    border: var(--bubble-border);
+    box-shadow: var(--bubble-shadow);
+}
+.button-bubble i{
+    color: inherit !important;
+}
+
+/*COULEUR DES ICONES*/
+.fas, .fab, .far, .fa{
+    color: inherit !important;
+    padding: 5px;
+}
+
+.fa-sun::after{
+    color: rgb(151, 111, 0) !important;
+}
+.fa-plus-circle{
+    color: var(--secondary-dark) !important;
+}
+.fa-heart, .icon-like{
+    color: #111 !important;
+}
+.fa-heart::before, .icon-like::before{
+    color: var(--accent-color)!important;
+}
+.fa-comment, .fa-reply{
+    color: var(--secondary-dark) !important;
+}
+.fa-comment::before, .fa-reply::before{
+    color: var(--primary-dark) !important;
+}
+.fa-user{
+    color: var(--primary-color) !important;
+}
+.social-link .fab{
+    color: var(--accent-color) !important;
+}
+.social-link::after .fab::after{
+    color: var(--text-light) !important;
+}
+
+/*EFFET SUR LES CHAMPS DE FORMULAIRE*/
+.input-bubble{
+    background-color: rgba(255, 255, 255, 0.9);
+    border: var(--bubble-border);
+}
+.input-bubble:focus{
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+/*EFFET SUR LE FOOTER*/
+.footer-bubble{
+    backdrop-filter: blur(var(--bubble-blur));
+    border: var(--bubble-border);
+    box-shadow: var(--bubble-shadow);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/*GESTION DE L'INCOMPATIBILTE DU FLOU POUR LES AUTRES NAVIGATEURS AVEC UNE OPACITE PLUS ELEVE*/
+.no-backdrop-filter .card-bubble,
+.no-backdrop-filter .sidebar-bubble,
+.no-backdrop-filter .nav-bubble,
+.no-backdrop-filter .button-bubble,
+.no-backdrop-filter .header-bubble,
+.no-backdrop-filter .footer-bubble,
+.no-backdrop-filter .topic-bubble{
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*carte*/
-.card-bubble{
-    background: rgba(255, 255, 255, 0.7);
+/*.card-bubble{
+    background: rgba(255, 255, 255, 0.8);
     border-radius: var(--border-radius-md);
     border: var(--bubble-border);
     box-shadow: var(--bubble-shadow);
@@ -58,33 +197,40 @@
     background: rgba(255, 255, 255, 0.95);
 }
 
-/*BOUTON*/
-.button-bubble{
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: var(--border-radius-md);
-    border: var(--bubble-border);
-    box-shadow: var(--shadow-sm);
+
+.bubble-effect::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+}
+.button-bubble:hover::after{
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+}
+
+
+/*ELEMENT DE NAVIGATION*/
+/*.button-bubble, .header-bubble, .footer-bubble{
     backdrop-filter: blur(var(--bubble-blur));
-    -webkit-backdrop-filter: blur(var(--bubble-blur));
-    padding: var(--spacing-sm) var(--spacing-lg);
-    color: var(--text-main);
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
+    border: var(--bubble-border);
+    box-shadow: var(--bubble-shadow);
 }
-.button-bubble p{
-    margin: 0px;
+
+.nav-bubble{
+    background-color: rgba(255, 255, 255, 0.955);
+    backdrop-filter: blur(var(--bubble-blur));
+    border: var(--bubble-border);
+    box-shadow: var(--bubble-shadow);
 }
-.no-backdrop-filter .button-bubble{
-    background: rgba(255, 255, 255, 0.9);
-}
-.button-bubble:hover{
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-0.125rem);
-}
-.button-bubble:active{
-    transform: translateY(0.0625rem);
-}
+
+
+
+

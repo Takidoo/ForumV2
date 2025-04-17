@@ -1,22 +1,26 @@
-/*STYLE INITIALE DES PAGES*/
+/*STYLE FONDAMENTALE DES PAGES*/
 
-/*reset*/
+/*l'initialisation*/
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/*base*/
+/*la base*/
 body{
-    font-family: 'Poppins', Arial, sans-serif;
     color: var(--text-main);
     font-size: var(--font-md);
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
-    background-color: rgba(255, 255, 255, 0.85);
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    align-items: center;
+    background-color: #ffe3cd60;
 }
 
 /*voile blanc avec un relief arc-en-ciel*/
@@ -28,28 +32,35 @@ body::before{
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(circle at 15% 15%, rgba(255, 105, 97, 0.07) 0%, rgba(255, 105, 128, 0) 50%), /*rouge à rose pâle*/
-        radial-gradient(circle at 85% 25%, rgba(255, 180, 128, 0.07) 0%, rgba(255, 180, 128, 0) 50%), /*orange à jaune pâle*/
-        radial-gradient(circle at 30% 45%, rgba(248, 243, 141, 0.07) 0%, rgba(248, 243, 141, 0) 40%), /*jaune pâle*/
-        radial-gradient(circle at 75% 65%, rgba(66, 214, 164, 0.07) 0%, rgba(66, 214, 164, 0) 50%), /*vert pâle*/
-        radial-gradient(circle at 20% 80%, rgba(89, 173, 246, 0.07) 0%, rgba(89, 173, 246, 0) 50%), /*bleu pâle*/
-        radial-gradient(circle at 80% 90%, rgba(157, 148, 255, 0.07) 0%, rgba(157, 148, 255, 0) 50%); /*violet pâle*/
-    background-blend-mode: overlay; /*mélange de couleur harmonisé*/
+    /*voile arc-en-ciel*/
+    radial-gradient(circle at 15% 15%, rgba(255, 105, 97, 0.9) 0%, transparent 40%), /* Rouge */
+    radial-gradient(circle at 75% 25%, rgba(255, 180, 128, 0.9) 0%, transparent 40%), /* Orange */
+    radial-gradient(circle at 25% 55%, rgba(248, 243, 141, 0.9) 0%, transparent 30%), /* Jaune */
+    radial-gradient(circle at 65% 60%, rgba(66, 214, 165, 0.9) 0%, transparent 40%), /* Vert */
+    radial-gradient(circle at 15% 85%, rgba(89, 173, 246, 0.9) 0%, transparent 40%), /* Bleu */
+    radial-gradient(circle at 70% 90%, rgba(157, 148, 255, 0.9) 0%, transparent 40%); /* Violet */
     z-index: -2; /*arrière-plan*/
 }
 
-
-/*liens*/
+/*ELEMENTS GENERAUX*/
+/*les liens*/
 a{
     text-decoration: none;
     color: var(--text-main);
+    font-weight: 400;
     transition: all 0.3s ease;
 }
 a:hover{ /*au survole*/
     color: var(--primary-color);
 }
+a:link{ /*couleur du lien*/
+    color: var(--accent-button) !important;
+}
+a:visited{ /*lorsque les liens sont cliqués*/
+    color: var(--accent-violet) !important;
+}
 
-/*boutons*/
+/*les boutons*/
 button{
     cursor: pointer;
     border: none;
@@ -60,14 +71,14 @@ button{
     transition: all 0.3s ease;
 }
 
-/*images*/
+/*les images*/
 img{
     max-width: 100%;
     height: auto;
     border-radius: var(--border-radius-sm);
 }
 
-/*pour les ajouts externe*/
+/*les Formulaires*/
 input, select, textarea{
     font-family: inherit;
     font-size: inherit;
@@ -93,7 +104,7 @@ h1, h2, h3, h4, h5, h6{
 
 h1{
     font-size: var(--font-xxl);
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
 }
 h2{
     font-size: var(--font-xl);
@@ -102,7 +113,7 @@ h3{
     font-size: var(--font-lg);
 }
 
-/*paragraphe et liste*/
+/*les paragraphes et les listes*/
 p{
     margin-bottom: var(--spacing-md);
 }
@@ -113,6 +124,16 @@ ul, ol{
 }
 li{
     margin-bottom: var(--spacing-xs);
+}
+
+.text-primary{
+    color: var(--text-main);
+}
+.text-secondary{
+    color: var(--text-muted);
+}
+.text-highlight{
+    color: var(--text-highlight);
 }
 
 blockquote{
@@ -130,52 +151,19 @@ hr{
     margin: var(--spacing-md);
 }
 
+/*le logo*/
+.logo-placeholder{
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-shadow: 0, 1px, 3px rgba(0, 0, 0, 0.1);
+}
+
+/*les réseaux sociaux*/
 .social-link{
     padding: 5px 10px;
     margin: 0 5px;
 }
 .social-links{
     margin-top: 10px;
-}
-
-
-  .topic-bubble {
-    width: 95%;
-    border-collapse: collapse;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-top: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    background-color: #fff;
-}
-
-.topic-bubble thead {
-    background-color: var(--accent-light, #f0f4f8);
-}
-
-.topic-bubble th, .topic-bubble td {
-    padding: 10px 14px;
-    text-align: left;
-    font-size: 0.85rem;
-    color: #333;
-}
-
-.topic-bubble tbody tr {
-    border-top: 1px solid #eee;
-    transition: background-color 0.2s ease;
-}
-
-.topic-bubble tbody tr:hover {
-    background-color: #f9f9f9;
-}
-
-.topic-title {
-    color: #0077cc;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.topic-title i {
-    margin-right: 8px;
-    color: #0077cc;
 }

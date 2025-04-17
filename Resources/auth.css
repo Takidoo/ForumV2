@@ -1,0 +1,426 @@
+/*STRUCTURE POUR LE FORMULAIRE D'AUTHENTIFICATION*/
+.auth-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--bg-color);
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.auth-layout{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #2c3e50, #3498db);
+    overflow: hidden;
+}
+
+/*LES ELEMENTS ROTATIFS D'ARRIERE-PLAN*/
+.rotate-bg, .rotate-bg2{
+    position: absolute;
+    z-index: 0;
+}
+.rotate-bg{
+    width: 500px;
+    height: 500px;
+    background: rgba(52, 152, 219, 0.5);
+    top: -200px;
+    right: -200px;
+}
+.rotate-bg2{
+    width: 400px;
+    height: 400px;
+    background: rgba(231, 76, 60, 0.5);
+    bottom: -150px;
+    left: -150px;
+}
+
+/*LE CONTENEUR DU FORMULAIRE*/
+.wrapper{ 
+    position: relative;
+    width: 90%;
+    max-width: 380px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin: 0 auto;
+}
+
+/*LES FORMULAIRES DE CONNEXION ET D'INSCRIPTION*/
+.form-box{
+    width: 100%;
+    padding: 40px 30px;
+    transition: all var(--transition-speed) ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-box form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-box.login{
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+}
+.form-box.register{
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none; /*empeche les interactions*/
+    z-index: -1;
+}
+.info-text.login{
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-blue));
+}
+.info-text.register{
+    pointer-events: auto;
+    opacity: 0;
+    transform: translateX(100%);
+}
+.info-text blockquote:hover{
+    color: var(--primary-dark) !important;
+    transition: color 0.3s ease;
+}
+/*LE BASCULEMENT ENTRE LOGIN ET REGISTER*/
+.auth-layout.active .form-box.login{
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.auth-layout.active .form-box.register{
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+}
+.auth-layout.active .info-text.register{
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto; /*active les interactions lorsque register est visible*/
+}
+
+/*LE TITRE*/
+.title{
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    text-align: center;
+    width: 100%;
+    align-self: center;
+}
+
+/*LES CHAMPS DE FORMULAIRES OU ENTREE UTILISATEUR*/
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 25px 0;
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    padding: 0 35px 0 5px;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid var(--input-border);
+    font-size: 1rem;
+    color: var(--text-color);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #777;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.input-box input:focus,
+.input-box input:valid{
+    border-bottom-color: var(--primary-color);
+}
+.input-box i{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+}
+.input-box input:focus ~ label,
+.input-box input:valid ~ label{
+    top: -5px;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+}
+
+/*LES LIENS*/
+.linkTxt{
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 15px;
+}
+.linkTxt p a{
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+.linkTxt p a:hover{
+    text-decoration: underline;
+    color: var(--accent-color);
+}
+
+/*LE BOUTON DE VALIDATION*/
+.btn{
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.btn:hover{
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/*LE LOGO*/
+.auth-logo-container{
+    position: fixed;
+    top: 20px;
+    z-index: 10;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/*AFFICHAGE MODE TABLETTE (à partir de 48em ou 768px)*/
+@media (min-width: 48em){
+    /*le conteneur de formulaire*/
+    .wrapper{
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    }
+
+    /*éléments du formulaire*/
+    .form-box{
+        width: 50%;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+ 
+    /*les panneaux d'informations*/
+    .info-text{
+        position: relative;
+        width: 50%;
+        height: 100%;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        text-align: center;
+        color: #fff;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    }
+    .info-text.login{
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-blue));
+    }
+    .info-text.register{
+        background: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));
+        position: absolute;
+        left: 0;
+        transform: translateX(-100%);
+        opacity: 0;
+        pointer-events: auto;
+    }
+    .info-text.login blockquote:hover{
+        color: var(--primary-dark);
+        transition: color 0.3s ease;
+    }
+    .info-text.register blockquote:hover,
+    .auth-layout.active .info-text.register blockquote:hover{
+        color: var(--primary-dark) !important;
+        transition: color 0.3s ease;
+    }
+    /* ANIMATION LORS DU BASCULEMENT */
+    .auth-layout.active .info-text.login {
+        opacity: 0;
+        transform: translateX(-100%);
+        pointer-events: none;
+    }
+    
+    .auth-layout.active .info-text.register {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+    
+    /* Ajustement des formulaires */
+    .form-box.login {
+        order: 1;
+    }
+    .info-text.login{
+        order: 2;
+    }
+    .auth-layout.active .form-box.register{
+        order: 1;
+    }
+    .auth-layout.active .info-text.register{
+        order: 2;
+    }
+}
+
+
+/*AFFICHAGE MODE ORDINATEUR (à partir de 64em ou 1024px)*/
+@media (min-width: 64em){
+    .wrapper{
+        max-width: 900px;
+        height: 500px;
+        display: flex;
+    }
+
+    .rotate-bg{
+        width: 500px;
+        height: 500px;
+    }
+    .rotate-bg2{
+        width: 600px;
+        height: 600px;
+    }
+
+    /*les formulaires*/
+    .form-box{
+        width: 50%;
+        height: 100%;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .login{
+        position: relative;
+        border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
+        left: 0;
+        padding: 0 var(--spacing-xl) 0 var(--spacing-lg);
+    }
+
+    .register{
+        position: absolute;
+        border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+        right: 0;
+        left: auto;
+        padding: 0 var(--spacing-xl) 0 var(--spacing-lg);
+    }
+    
+    .info-text{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: var(--spacing-lg);
+        color: var(--text-light);
+        text-align: center;
+        transition: all 0.5s ease;
+    }
+    .info-text.login{
+        background: linear-gradient(45deg, var(--accent-pink), var(--accent-orange));
+        border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
+        right: 0;
+    }
+    .info-text.register{
+        background: linear-gradient(45deg, var(--accent-pink), var(--accent-orange));
+        left: 0;
+        border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-100%);
+    }
+
+    .wrapper.active .info-text.login{
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    .wrapper.active .info-text.register{
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .wrapper.active .login{
+        transform: translateX(100%);
+        pointer-events: none;
+        opacity: 0;
+    }
+    .wrapper.active .register{
+        transform: translateX(-100%);
+        pointer-events: auto;
+        left: 0;
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*.wrapper.active .form-box.login{
+    left: -100%;
+    opacity: 0;
+    pointer-events: none;
+}
+.wrapper.active .form-box.register{ /*rend visible register*/
+/*    right: 0; 
+    opacity: 1;
+    pointer-events: all; /*inclus tous les éléments*/
+/*}
+
+/*message d'accueil ou d'information complémentaires de l'authentification*/
+/*.info-text{
+    display: none;
+}
