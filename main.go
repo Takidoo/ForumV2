@@ -32,6 +32,7 @@ func main() {
 	http.HandleFunc("/api/SetUserRole", API.SetUserRole)
 	http.HandleFunc("/api/DisableAccount", API.DisableAccount)
 	http.HandleFunc("/api/CreateCategory", API.CreateCategory)
+	http.HandleFunc("/api/LikeThread", API.LikeThread)
 
 	// Pages
 	http.HandleFunc("/", PageHandlers.HomePageHandler)

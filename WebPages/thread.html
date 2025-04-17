@@ -12,83 +12,71 @@
         <link rel="stylesheet" href="/Resources/bubble_effect.css">
         <link rel="stylesheet" href="/Resources/mess.css">
 
-        <script src="Resources/nav_form.js"></script>
-    </head>
+    <script src="Resources/nav_form.js"></script>
+</head>
 
-
-    <body>
-        <div class="page-container"> <!--squelette en grid pour un placement plus précis et adaptatif-->
-            <!--HEADER PRINCIPAL-->
-            <header class="main-header header-bubble floating-slow">
-                <div class="header-left">
-                    <div class="logo">
-                        <div class="logo-placeholder">TravelTandem</div>
-                    </div>
-                    <nav class="main-nav nav-bubble">
-                        <button class="lang-btn" data-lang="fr">French</button>
-                        <button class="lang-btn" data-lang="es">Spanish</button>
-                        <button class="lang-btn" data-lang="it">Italian</button>
-                        <button class="lang-btn" data-lang="pt">Portuguese</button>
-                        <button class="lang-btn" data-lang="th">Thai</button>
-                        <button class="lang-btn" data-lang="en">English</button>
-                    </nav>
+<body>
+    <div class="page-container"> <!--squelette en grid pour un placement plus précis et adaptatif-->
+        <!--HEADER PRINCIPAL-->
+        <header class="main-header header-bubble floating-slow">
+            <div class="header-left">
+                <div class="logo">
+                    <div class="logo-placeholder">TravelTandem</div>
                 </div>
+                <nav class="main-nav nav-bubble">
+                    <button class="lang-btn" data-lang="fr">French</button>
+                    <button class="lang-btn" data-lang="es">Spanish</button>
+                    <button class="lang-btn" data-lang="it">Italian</button>
+                    <button class="lang-btn" data-lang="pt">Portuguese</button>
+                    <button class="lang-btn" data-lang="th">Thai</button>
+                    <button class="lang-btn" data-lang="en">English</button>
+                </nav>
+            </div>
 
-                <div class="header-right">
-                    <div class="auth-buttons">
-                        <a href="/register" class="accent-button pink button-bubble">Register</a>
-                        <a href="/login" class="accent-button blue button-bubble">Login</a>
-                    </div>
-
+            <div class="header-right">
+                <div class="auth-buttons">
+                    {{if .IsLogged}}
                     <div class="button-bubble">
-                        <p>Connécté en tant que : {{pseduo}}</p>
+                        <p>Connécté en tant que : {{.Username}}</p>
                     </div>
-                </div>
-            </header>
-
-            <div class="forum-layout" style="display: flex; gap: 20px; align-items: flex-start; padding: 20px;">
-                <div class="like-sidebar card-bubble" style="flex: 1; padding: 16px; text-align: center;">
-                    <h3 style="margin-bottom: 12px;">Aimez-vous ce thread ?</h3>
-                    <button id="like-button" class="button-bubble" style="display: flex; align-items: center; gap: 8px; margin: auto;">
-                        <i class="fas fa-thumbs-up"></i> J'aime
-                    </button>
-                    <div id="like-count" style="margin-top: 10px; font-weight: bold;">0 j'aime</div>
-                </div>
-                {{range .Posts}}
-                <div class="forum-container" style="flex: 4;">
-                        <div class="post">
-                            <div class="post-header">
-                                <div class="user-info">
-                                    <h3 class="username">{{.Owner}}</h3>
-                                </div>
-                                <div class="post-info">
-                                    <span class="post-date">{{.Date}}</span>
-                                    <span class="post-number">#{{.PostID}}</span>
-                                </div>
-                            </div>
-        
-                            <div class="post-content">
-                                <p>{{.Content}}</p>
-                            </div>
-                    </div>
-                    <div class="forum-container" style="flex: 4;">
-                        <div class="post">
-                            <div class="post-header">
-                                <div class="user-info">
-                                    <h3 class="username">{{.Owner}}</h3>    
-                                </div>
-                                <div class="post-info">
-                                    <span class="post-date">{{.Date}}</span>
-                                    <span class="post-number">#{{.PostID}}</span>
-                                </div>
-                            </div>
-        
-                            <div class="post-content">
-                                <p>{{.Content}}</p>
-                            </div>
-                    </div>
-                    
+                    {{else}}
+                    <a href="/register" class="accent-button pink button-bubble">Register</a>
+                    <a href="/login" class="accent-button blue button-bubble">Login</a>
                     {{end}}
+                </div>
+
+                <button class="button-bubble">
+                    <i class="fas fa-sun">☀</i>
+                </button>
+            </div>
+        </header>
+
+        <div class="forum-layout" style="display: flex; gap: 20px; align-items: flex-start; padding: 20px;">
+            <div class="like-sidebar card-bubble" style="flex: 1; padding: 16px; text-align: center;">
+                <h3 style="margin-bottom: 12px;">Aimez-vous ce thread ?</h3>
+                <button id="like-button" class="button-bubble" style="display: flex; align-items: center; gap: 8px; margin: auto;">
+                    <i class="fas fa-thumbs-up"></i> J'aime
+                </button>
+                <div id="like-count" style="margin-top: 10px; font-weight: bold;">{{.Likes}} j'aime</div>
+            </div>
+            {{range .Posts}}
+            <div class="forum-container" style="flex: 4;">
+                    <div class="post">
+                        <div class="post-header">
+                            <div class="user-info">
+                                <h3 class="username">{{.Owner}}</h3>
+                            </div>
+                            <div class="post-info">
+                                <span class="post-date">{{.Date}}</span>
+                                <span class="post-number">#{{.PostID}}</span>
+                            </div>
+                        </div>
+    
+                        <div class="post-content">
+                            <p>{{.Content}}</p>
+                        </div>
+                </div>
+                {{end}}
 
                     
                 </div>

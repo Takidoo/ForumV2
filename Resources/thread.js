@@ -27,4 +27,31 @@ console.error("Erreur réseau :", error);
 alert("Erreur réseau.");
 });
 });
+
+
+document.getElementById("like-button").addEventListener("click", function () {
+    
+    const params = new URLSearchParams();
+    const url = new URLSearchParams(window.location.search);
+    params.append("thread_id", url.get("thread_id"));
+    
+    fetch("/api/LikeThread", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: params.toString()
+    })
+    .then(response => {
+    if (response.ok) {
+        alert("Envoyé avec succès !");
+    } else {
+        alert("Erreur lors de l'envoi.");
+    }
+    })
+    .catch(error => {
+    console.error("Erreur réseau :", error);
+    alert("Erreur réseau.");
+    });
+    });
 });

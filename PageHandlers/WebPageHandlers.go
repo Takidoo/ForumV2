@@ -17,15 +17,21 @@ type HomePageData struct {
 
 type SearchPageData struct {
 	Result   []Forum.Thread
+	Username string
 	IsLogged bool
 	IsAdmin  bool
 }
 
 type ThreadPageData struct {
 	Posts    []Forum.Post
+	Username string
+	Likes    int
 	IsLogged bool
 }
-
+type CreationData struct {
+	Username string
+	IsLogged bool
+}
 type AdminPageData struct {
 	Username string
 }
@@ -94,12 +100,20 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, PageData)
 }
 func CreationHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("WebPages/creation.html")
-	if err != nil {
-		log.Println("Erreur lors du chargement de la page de création :", err)
+	tmpl, _ := template.ParseFiles("WebPages/creation.html")
+	if Forum.UserIsLogged(w, r) {
+		session, _ := r.Cookie("session_id")
+		user, _ := Forum.GetUser(session.Value)
+		tmpl.Execute(w, CreationData{
+			Username: user.Username,
+			IsLogged: true,
+		})
 		return
 	}
-	tmpl.Execute(w, nil)
+	tmpl.Execute(w, CreationData{
+		Username: "",
+		IsLogged: false,
+	})
 }
 
 func SearchHandler(w http.ResponseWriter, r *http.Request) {
@@ -111,10 +125,13 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == http.MethodPost {
 		if Forum.UserIsLogged(w, r) {
+			session, _ := r.Cookie("session_id")
+			user, _ := Forum.GetUser(session.Value)
 			tmpl.Execute(w, SearchPageData{
 				Result:   Forum.Search(r.FormValue("input")),
 				IsLogged: true,
 				IsAdmin:  false,
+				Username: user.Username,
 			})
 			return
 		}
@@ -149,14 +166,19 @@ func ThreadHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if Forum.UserIsLogged(w, r) {
+		session, _ := r.Cookie("session_id")
+		user, _ := Forum.GetUser(session.Value)
 		tmpl.Execute(w, ThreadPageData{
 			Posts:    Forum.GetThreadPosts(r.URL.Query().Get("thread_id")),
+			Likes:    Forum.GetLikes(r.URL.Query().Get("thread_id")),
 			IsLogged: true,
+			Username: user.Username,
 		})
 		return
 	}
 	tmpl.Execute(w, ThreadPageData{
 		Posts:    Forum.GetThreadPosts(r.URL.Query().Get("thread_id")),
+		Likes:    Forum.GetLikes(r.URL.Query().Get("thread_id")),
 		IsLogged: false,
 	})
 }
