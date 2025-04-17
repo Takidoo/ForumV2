@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Créer un post</title>
+  <title>Create a post</title>
   <link rel="stylesheet" href="/Resources/creation.css">
   <link rel="stylesheet" href="/Resources/variable.css">
     <link rel="stylesheet" href="/Resources/basic_initial.css">
     <link rel="stylesheet" href="/Resources/layout.css">
     <link rel="stylesheet" href="/Resources/bubble_effect.css">
+    <link rel="stylesheet" href="/Resources/animation.css">
     <script src="/Resources/nav_form.js"></script>
     <script src="/Resources/creation.js"></script>
 </head>
@@ -31,37 +32,37 @@
 
       <div class="header-right">
           <div class="auth-buttons">
-              <a href="/register" class="accent-button pink button-bubble">Register</a>
-              <a href="/login" class="accent-button blue button-bubble">Login</a>
+              <a href="/register" class="accent-button button-bubble">Register</a>
+              <a href="/login" class="accent-button button-bubble">Login</a>
           </div>
       
           <button class="button-bubble">
-              <i class="fas fa-sun">☀</i>
+              <i class="fas fa-sun"></i>
           </button>
       </div>
   </header>
-  <div class="container">
-    <h1>Créer un nouveau post</h1>
+  <div class="container scale-in-center-normal">
+    <h1>Create a post</h1>
     <form id ="threadform" class="post-form">
-      <label for="title">Titre du post</label>
+      <label for="title">Post title</label>
       <input type="text" id="title" name="title" required>
 
-      <label for="category">Catégorie</label>
+      <label for="category">Category</label>
       <select id="category" name="category" required>
-        <option value="">-- Sélectionnez --</option>
-        <option value="1">Espagnol</option>
-        <option value="2">Français</option>
-        <option value="3">Italien</option>
-        <option value="4">Portugais</option>
+        <option value="">-- Select --</option>
+        <option value="1">Spanish</option>
+        <option value="2">French</option>
+        <option value="3">Italian</option>
+        <option value="4">Portuguese</option>
         <option value="5">Thai</option>
         <option value="6">English</option>
   
       </select>
 
-      <label for="content">Contenu</label>
+      <label for="content">Content</label>
       <textarea id="content" name="content" rows="8" required></textarea>
 
-      <button type="submit" id="pubbtn">Publier</button>
+      <button type="submit" id="pubbtn">Post</button>
     </form>
   </div>
 </body>
