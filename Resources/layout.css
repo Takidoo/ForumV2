@@ -258,6 +258,7 @@
     /*stucture header*/
     .main-header{
         flex-direction: row;
+        background: dodgerblue;;
         padding: var(--spacing-md) var(--spacing-lg);
     }
     .header-left{
@@ -383,7 +384,7 @@
         grid-template-columns: 3fr 1fr;
     }
 
-    /*authentification*/
+    /*authentification*/    
     .wrapper{
         max-width: 750px;
     }

@@ -36,7 +36,7 @@ func GetLastedThreads(limit int) []Thread {
 }
 
 func GetMostLikedThreads(limit int) []Thread {
-	rows, err := Database.DB.Query("SELECT id,title,created_at,replies,user_id FROM threads WHERE visible=true ORDER BY replies ASC LIMIT ?;", limit)
+	rows, err := Database.DB.Query("SELECT id,title,created_at,replies,user_id FROM threads WHERE visible=true ORDER BY replies DESC LIMIT ?;", limit)
 	var Threads []Thread
 	if err != nil {
 		print(err.Error())

@@ -33,17 +33,17 @@
 
             <div class="header-right">
                 <div class="auth-buttons">
-                    {{if .IsLogged}}
-                    <br>
-                    {{else}}
+                    
                     <a href="/register" class="accent-button pink button-bubble">Register</a>
                     <a href="/login" class="accent-button blue button-bubble">Login</a>
                     {{end}}
                 </div>
 
-                <div class="button-bubble">
-                    <p>Connécté en tant que : {{pseduo}}</p>
-                </div>
+                {{if .IsLogged}}
+                    <div class="button-bubble">
+                        <p>Connécté en tant que : {{.Username}}</p>
+                    </div>
+                    {{else}}       
             </div>
         </header>
 
@@ -128,10 +128,10 @@
                 <!--SIDEBAR-->
                 <aside class="forum-sidebar" style="width: 280px;">
                     <div class="search-bar">
-                        <form>
-                            <input type="text" class="search-input" placeholder="Rechercher un sujet, un auteur..." />
-                            <button class="search-button"><span class="icon-search">🔍</span></button>
-                        </form>
+                        <form action="/search" method="POST">
+            <input type="text" class="search-input" name="input" placeholder="Rechercher un sujet, un auteur..." />
+            <button class="search-button"><span class="icon-search">🔍</span></button>
+          </form>
                     </div>
 
                     <div class="info-section">
@@ -149,7 +149,7 @@
                     {{if .IsLogged}}
                     <div class="forum-actions">
                         <a href="/creation" class="accent-button bleu button-bubble"><i
-                                class="fas fa-plus-circle"></i>Nouveau sujet</a>
+                        class="fas fa-plus-circle"></i>Nouveau sujet</a>
                     </div>
                     {{end}} 
                 </aside>

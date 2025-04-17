@@ -74,6 +74,9 @@
     display: inline-block;
     text-align: center;
 }
+.button-bubble p{
+    margin: 0px;
+}
 .no-backdrop-filter .button-bubble{
     background: rgba(255, 255, 255, 0.9);
 }
@@ -84,4 +87,11 @@
 }
 .button-bubble:active{
     transform: translateY(0.0625rem);
+}
+
+#like-button.liked {
+    background-color: #4caf50;
+    color: white;
+    box-shadow: var(--shadow-md);
+    transform: scale(1.05);
 }
