@@ -66,6 +66,14 @@ func CheckIfThreadExist(thread_id string) bool {
 	return true
 }
 
+func GetLikes(thread_id string) int {
+	rows := Database.DB.QueryRow("SELECT likes FROM threads WHERE id=?", thread_id)
+	likes := 0
+	rows.Scan(&likes)
+	return likes
+
+}
+
 func TimeAgo(dateStr string) string {
 	t, err := time.Parse(time.RFC3339, dateStr)
 	if err != nil {

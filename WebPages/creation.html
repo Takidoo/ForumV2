@@ -31,8 +31,14 @@
 
       <div class="header-right">
           <div class="auth-buttons">
-              <a href="/register" class="accent-button pink button-bubble">Register</a>
-              <a href="/login" class="accent-button blue button-bubble">Login</a>
+            {{if .IsLogged}}
+            <div class="button-bubble">
+                <p>Connécté en tant que : {{.Username}}</p>
+            </div>
+            {{else}}
+            <a href="/register" class="accent-button pink button-bubble">Register</a>
+            <a href="/login" class="accent-button blue button-bubble">Login</a>
+            {{end}}
           </div>
       
           <button class="button-bubble">

@@ -35,8 +35,14 @@
 
             <div class="header-right">
                 <div class="auth-buttons">
+                    {{if .IsLogged}}
+                    <div class="button-bubble">
+                        <p>Connécté en tant que : {{.Username}}</p>
+                    </div>
+                    {{else}}
                     <a href="/register" class="accent-button pink button-bubble">Register</a>
                     <a href="/login" class="accent-button blue button-bubble">Login</a>
+                    {{end}}
                 </div>
 
                 <button class="button-bubble">
@@ -46,6 +52,13 @@
         </header>
 
         <div class="forum-layout" style="display: flex; gap: 20px; align-items: flex-start; padding: 20px;">
+            <div class="like-sidebar card-bubble" style="flex: 1; padding: 16px; text-align: center;">
+                <h3 style="margin-bottom: 12px;">Aimez-vous ce thread ?</h3>
+                <button id="like-button" class="button-bubble" style="display: flex; align-items: center; gap: 8px; margin: auto;">
+                    <i class="fas fa-thumbs-up"></i> J'aime
+                </button>
+                <div id="like-count" style="margin-top: 10px; font-weight: bold;">{{.Likes}} j'aime</div>
+            </div>
             {{range .Posts}}
             <div class="forum-container" style="flex: 4;">
                     <div class="post">

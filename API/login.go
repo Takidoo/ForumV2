@@ -3,7 +3,6 @@ package API
 import (
 	"Forum/Database"
 	"database/sql"
-	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -24,29 +23,23 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	username := r.FormValue("username")
 	password := r.FormValue("password")
 
-	w.Header().Set("Content-Type", "application/json")
-
 	if username == "" || password == "" {
-		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(map[string]string{"error": "Nom d'utilisateur ou mot de passe manquant"})
+		http.Error(w, "Error", http.StatusBadRequest)
 		return
 	}
 
 	success, err := LoginUser(username, password, w)
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		json.NewEncoder(w).Encode(map[string]string{"error": err.Error()})
+		http.Error(w, "Error", http.StatusBadRequest)
 		return
 	}
 
 	if !success {
-		w.WriteHeader(http.StatusUnauthorized)
-		json.NewEncoder(w).Encode(map[string]string{"error": "Identifiants invalides"})
+		http.Error(w, "Invalid ids", http.StatusBadRequest)
 		return
 	}
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"success": "Connexion réussie avec succès"})
 }
 
 func LoginUser(username, password string, w http.ResponseWriter) (bool, error) {
