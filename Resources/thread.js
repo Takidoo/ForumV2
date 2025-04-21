@@ -17,7 +17,7 @@ body: params.toString()
 })
 .then(response => {
 if (response.ok) {
-    alert("Envoyé avec succès !");
+    location.reload();
 } else {
     alert("Erreur lors de l'envoi.");
 }
@@ -44,9 +44,9 @@ document.getElementById("like-button").addEventListener("click", function () {
     })
     .then(response => {
     if (response.ok) {
-        alert("Envoyé avec succès !");
+        location.reload();
     } else {
-        alert("Erreur lors de l'envoi.");
+        alert("Vous avez déjà liker ce thread");
     }
     })
     .catch(error => {
