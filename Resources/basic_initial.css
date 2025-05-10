@@ -176,6 +176,209 @@ hr{
 }
 
 .topic-title i {
-    margin-right: 8px;
+    margin-right: 8px;/*STYLE INITIALE DES PAGES*/
+
+    /*reset*/
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /*base*/
+    body{
+        font-family: 'Poppins', Arial, sans-serif;
+        color: var(--text-main);
+        font-size: var(--font-md);
+        line-height: 1.6;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+        background-color: rgba(255, 255, 255, 0.85);
+    }
+    
+    /*voile blanc avec un relief arc-en-ciel*/
+    body::before{
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 15% 15%, rgba(255, 105, 97, 0.07) 0%, rgba(255, 105, 128, 0) 50%), /*rouge à rose pâle*/
+            radial-gradient(circle at 85% 25%, rgba(255, 180, 128, 0.07) 0%, rgba(255, 180, 128, 0) 50%), /*orange à jaune pâle*/
+            radial-gradient(circle at 30% 45%, rgba(248, 243, 141, 0.07) 0%, rgba(248, 243, 141, 0) 40%), /*jaune pâle*/
+            radial-gradient(circle at 75% 65%, rgba(66, 214, 164, 0.07) 0%, rgba(66, 214, 164, 0) 50%), /*vert pâle*/
+            radial-gradient(circle at 20% 80%, rgba(89, 173, 246, 0.07) 0%, rgba(89, 173, 246, 0) 50%), /*bleu pâle*/
+            radial-gradient(circle at 80% 90%, rgba(157, 148, 255, 0.07) 0%, rgba(157, 148, 255, 0) 50%); /*violet pâle*/
+        background-blend-mode: overlay; /*mélange de couleur harmonisé*/
+        z-index: -2; /*arrière-plan*/
+    }
+    
+    
+    /*liens*/
+    a{
+        text-decoration: none;
+        color: var(--text-main);
+        transition: all 0.3s ease;
+    }
+    a:hover{ /*au survole*/
+        color: var(--primary-color);
+    }
+    
+    /*boutons*/
+    button{
+        cursor: pointer;
+        border: none;
+        font-family: inherit; /*force un élément à prendre la police de son parent pour une meilleure cohérence*/
+        font-size: inherit;
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: var(--border-radius-sm);
+        transition: all 0.3s ease;
+    }
+    
+    /*images*/
+    img{
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--border-radius-sm);
+    }
+    
+    /*pour les ajouts externe*/
+    input, select, textarea{
+        font-family: inherit;
+        font-size: inherit;
+        padding: var(--spacing-sm);
+        border-radius: var(--border-radius-sm);
+        border: 1px solid var(--border-color);
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease; /*transformation plus naturel*/
+    }
+    input:focus, select:focus, textarea:focus{ /*au clic ou a la selection de la zone des ajouts externes*/
+        outline: none; /*supprime le contour par défaut*/
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(89, 173, 246, 0.2);
+    }
+    
+    /*la police d'écriture*/
+    h1, h2, h3, h4, h5, h6{
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: var(--spacing-md);
+        color: var(--text-main);
+    }
+    
+    h1{
+        font-size: var(--font-xxl);
+        color: var(--primary-color);
+    }
+    h2{
+        font-size: var(--font-xl);
+    }
+    h3{
+        font-size: var(--font-lg);
+    }
+    
+    /*paragraphe et liste*/
+    p{
+        margin-bottom: var(--spacing-md);
+    }
+    
+    ul, ol{
+        margin-bottom: var(--spacing-md);
+        padding-left: var(--spacing-lg);
+    }
+    li{
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    blockquote{
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+        border-left: 3px solid var(--primary-color);
+        background-color: rgba(255, 255, 255, 0.5);
+        font-style: italic;
+    }
+    
+    hr{
+        border: 0;
+        height: 1px;
+        background: var(--border-color);
+        margin: var(--spacing-md);
+    }
+    
+    .social-link{
+        padding: 5px 10px;
+        margin: 0 5px;
+    }
+    .social-links{
+        margin-top: 10px;
+    }
+    
+    
+      .topic-bubble {
+        width: 95%;
+        border-collapse: collapse;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-top: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        background-color: #fff;
+    }
+    
+    .topic-bubble thead {
+        background-color: var(--accent-light, #f0f4f8);
+    }
+    
+    .topic-bubble th, .topic-bubble td {
+        padding: 10px 14px;
+        text-align: left;
+        font-size: 0.85rem;
+        color: #333;
+    }
+    
+    .topic-bubble tbody tr {
+        border-top: 1px solid #eee;
+        transition: background-color 0.2s ease;
+    }
+    
+    .topic-bubble tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+    
+    .topic-title {
+        color: #0077cc;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .topic-title i {
+        margin-right: 8px;
+        color: #0077cc;
+    }
     color: #0077cc;
+}
+
+.logo-placeholder {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.lang-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background-color: white;
+    color: dodgerblue;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }

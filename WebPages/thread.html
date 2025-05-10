@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TandemTalk Language Learning</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/Resources/variable.css">
-    <link rel="stylesheet" href="/Resources/basic_initial.css">
-    <link rel="stylesheet" href="/Resources/layout.css">
-    <link rel="stylesheet" href="/Resources/bubble_effect.css">
-    <link rel="stylesheet" href="/Resources/mess.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TandemTalk Language Learning</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="/Resources/variable.css">
+        <link rel="stylesheet" href="/Resources/basic_initial.css">
+        <link rel="stylesheet" href="/Resources/layout.css">
+        <link rel="stylesheet" href="/Resources/bubble_effect.css">
+        <link rel="stylesheet" href="/Resources/mess.css">
 
     <script src="Resources/nav_form.js"></script>
 </head>
@@ -78,22 +78,41 @@
                 </div>
                 {{end}}
 
-                
-            </div>
+                    
+                </div>
 
 
-            <!-- Zone d'affichage des réponses -->
+                <!-- Zone d'affichage des réponses -->
 
-            <div class="reply-sidebar"
-                style="flex: 1; background: #f2f4f8; padding: 16px; border-radius: 8px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
-                <h3>Répondre au post</h3>
-                <textarea id="sidebar-reply-textarea" placeholder="Tape ta réponse ici..." rows="8"
-                    style="width: 100%; padding: 8px; margin-top: 10px; border-radius: 4px; border: 1px solid #ccc;"></textarea>
-                <button id="sidebar-reply-send" style="margin-top: 10px; padding: 8px 16px; background-color: #0099ff; color: white; border: none; border-radius: 4px;">Envoyer</button>
+                <div class="reply-sidebar"
+                    style="flex: 1; background: #f2f4f8; padding: 16px; border-radius: 8px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
+                    <h3>Répondre au post</h3>
+                    <textarea id="sidebar-reply-textarea" placeholder="Tape ta réponse ici..." rows="8"
+                        style="width: 100%; padding: 8px; margin-top: 10px; border-radius: 4px; border: 1px solid #ccc;"></textarea>
+                    <button id="sidebar-reply-send" style="margin-top: 10px; padding: 8px 16px; background-color: #0099ff; color: white; border: none; border-radius: 4px;">Envoyer</button>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="/Resources/thread.js"></script>
-</body>
+        <script src="/Resources/thread.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let likeCount = 0;
+                const likeButton = document.getElementById('like-button');
+                const likeDisplay = document.getElementById('like-count');
+        
+                likeButton.addEventListener('click', () => {
+                    if (likeButton.classList.contains('liked')) {
+                        likeCount--;
+                        likeButton.classList.remove('liked');
+                    } else {
+                        likeCount++;
+                        likeButton.classList.add('liked');
+                    }
+                    likeDisplay.textContent = `${likeCount} j'aime${likeCount > 1 ? 's' : ''}`;
+                });
+            });
+        </script>
 
-</html>
+    </body>
+
+    </html>

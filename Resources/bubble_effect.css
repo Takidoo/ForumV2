@@ -16,7 +16,7 @@
 
 /*HEADER*/
 .header-bubble{
-    background: rgba(255, 255, 255, 0.85);
+    background: dodgerblue;
     border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
     border: var(--bubble-border);
     box-shadow: var(--bubble-shadow);
@@ -87,4 +87,11 @@
 }
 .button-bubble:active{
     transform: translateY(0.0625rem);
+}
+
+#like-button.liked {
+    background-color: #4caf50;
+    color: white;
+    box-shadow: var(--shadow-md);
+    transform: scale(1.05);
 }

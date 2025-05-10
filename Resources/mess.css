@@ -1,10 +1,9 @@
- /* Container du forum */
+
  .forum-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
-/* Style du post */
 .post {
     background-color: #ffffff;
     border-radius: 8px;

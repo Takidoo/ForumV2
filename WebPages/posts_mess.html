@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TandemTalk Language Learning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/Resources/variable.css">
+    <link rel="stylesheet" href="/Resources/basic_initial.css">
+    <link rel="stylesheet" href="/Resources/layout.css">
+    <link rel="stylesheet" href="/Resources/bubble_effect.css">
+    <link rel="stylesheet" href="/Resources/mess.css">
+
+    <script src="Resources/nav_form.js"></script>
+</head>
+
+<body>
+    <div class="page-container"> <!--squelette en grid pour un placement plus précis et adaptatif-->
+        <!--HEADER PRINCIPAL-->
+        <header class="main-header header-bubble floating-slow">
+            <div class="header-left">
+                <div class="logo">
+                    <div class="logo-placeholder">TravelTandem</div>
+                </div>
+                <nav class="main-nav nav-bubble">
+                    <button class="lang-btn" data-lang="fr">French</button>
+                    <button class="lang-btn" data-lang="es">Spanish</button>
+                    <button class="lang-btn" data-lang="it">Italian</button>
+                    <button class="lang-btn" data-lang="pt">Portuguese</button>
+                    <button class="lang-btn" data-lang="th">Thai</button>
+                    <button class="lang-btn" data-lang="en">English</button>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <div class="auth-buttons">
+                    <a href="/register" class="accent-button pink button-bubble">Register</a>
+                    <a href="/login" class="accent-button blue button-bubble">Login</a>
+                </div>
+
+                <div class="button-bubble">
+                    <p>Connécté en tant que : {{pseduo}}</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="forum-layout" style="display: flex; gap: 20px; align-items: flex-start; padding: 20px;">
+            <div class="forum-container" style="flex: 4;">
+                <div class="post" data-post-id="3254">
+                    <div class="post-header">
+                        <div class="user-info">
+                            <h3 class="username">Enzo le gros simp de paupau</h3>
+                        </div>
+                        <div class="post-info">
+                            <span class="post-date">15 avril 2025, 14:30</span>
+                            <span class="post-number">#3254</span>
+                        </div>
+                    </div>
+
+                    <div class="post-content">
+                        <h2 class="post-title">Question sur le développement web</h2>
+                        <p>Bonjour à tous,</p>
+                        <p>Je suis en train d'apprendre le développement web et j'aimerais avoir quelques conseils sur
+                            les bonnes pratiques à suivre pour structurer mon projet.</p>
+                        <p>Avez-vous des recommandations pour un débutant comme moi ?</p>
+                        <p>Merci d'avance pour votre aide !</p>
+                    </div>
+
+
+                    <div class="post-footer" style="display: flex; justify-content: space-between;">
+                        <div class="post-reactions">
+                            <button class="reaction-btn">👍 J'aime <span class="count">3</span></button>
+                        </div>
+                        <div class="post-actions">
+                            
+                        </div>
+                    </div>
+
+                    <div class="replies-container"></div>
+                </div>
+            </div>
+
+
+            <!-- Zone d'affichage des réponses -->
+
+            <div class="reply-sidebar"
+                style="flex: 1; background: #f2f4f8; padding: 16px; border-radius: 8px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
+                <h3>Répondre au post</h3>
+                <textarea id="sidebar-reply-textarea" placeholder="Tape ta réponse ici..." rows="8"
+                    style="width: 100%; padding: 8px; margin-top: 10px; border-radius: 4px; border: 1px solid #ccc;"></textarea>
+                <button id="sidebar-reply-send"
+                    style="margin-top: 10px; padding: 8px 16px; background-color: #0099ff; color: white; border: none; border-radius: 4px;">Envoyer</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let activePostId = "3254"; 
+
+document.addEventListener('DOMContentLoaded', () => {
+   
+    document.getElementById('sidebar-reply-send').addEventListener('click', () => {
+        const content = document.getElementById('sidebar-reply-textarea').value.trim();
+        if (!content || !activePostId) return;
+
+        const post = document.querySelector(`.post[data-post-id="${activePostId}"]`);
+        const repliesContainer = post.querySelector('.replies-container');
+
+        const replyDiv = document.createElement('div');
+        replyDiv.classList.add('mini-post');
+        replyDiv.innerHTML = `
+            <div class="mini-header"><strong>TAKIDOOOOOOO</strong> – heure</div>
+            <div class="mini-content">${content}</div>
+        `;
+
+        repliesContainer.appendChild(replyDiv);
+        document.getElementById('sidebar-reply-textarea').value = "";
+    });
+});
+    </script>
+</body>
+
+</html>

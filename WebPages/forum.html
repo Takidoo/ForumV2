@@ -33,15 +33,17 @@
 
             <div class="header-right">
                 <div class="auth-buttons">
-                    {{if .IsLogged}}
-                    <div class="button-bubble">
-                        <p>Connécté en tant que : {{.Username}}</p>
-                    </div>
-                    {{else}}
+                    
                     <a href="/register" class="accent-button pink button-bubble">Register</a>
                     <a href="/login" class="accent-button blue button-bubble">Login</a>
                     {{end}}
                 </div>
+
+                {{if .IsLogged}}
+                    <div class="button-bubble">
+                        <p>Connécté en tant que : {{.Username}}</p>
+                    </div>
+                    {{else}}       
             </div>
         </header>
 
@@ -73,6 +75,13 @@
                                 <td><i class="fas fa-comments"></i> {{.Replies}}</td>
                                 <td><i class="fas fa-clock"></i> {{.Creation}}</td>
                             </tr>
+                            <tr>
+                                <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i
+                                            class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td><i class="fas fa-user"></i> {{.Author}}</td>
+                                <td><i class="fas fa-comments"></i> {{.Replies}}</td>
+                                <td><i class="fas fa-clock"></i> {{.Creation}}</td>
+                            </tr>
                             {{end}}
                         </tbody>
                     </table>
@@ -92,6 +101,12 @@
                         </thead>
                         <tbody>
                             {{range .LastedThreads}}
+                            <tr>
+                                <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
+                                <td><i class="fas fa-user"></i> {{.Author}}</td>
+                                <td><i class="fas fa-comments"></i> {{.Replies}}</td>
+                                <td><i class="fas fa-clock"></i> {{.Creation}}</td>
+                            </tr>
                             <tr>
                                 <td><a href="/thread?thread_id={{.ID}}" class="topic-title"><i class="fas fa-comment"></i>{{.Title}}</a></td>
                                 <td><i class="fas fa-user"></i> {{.Author}}</td>
